@@ -1,0 +1,52 @@
+.amenities{
+    width: 89.3%;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+    max-width: 48.125em;
+
+    @include desktop(){
+        margin-bottom: 7.6875em;
+        margin-left: 19.5%;
+    }
+
+    &__title {
+        font-size: 1.875rem;
+        font-weight: 400;
+        font-family: "Old Standard TT";
+        padding-bottom: 0.433em;
+        color: $fourth-color;
+        
+    }
+    &__line{
+        border: 0.0625em solid $fourteenth-color;
+        margin-bottom: 1.688em;
+    }
+    &__items{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 16.25em;
+
+        @include desktop(){
+            height: 11.25em;
+        }
+    
+        &--have{
+            
+            display: flex;
+            margin-right: 0.583rem;
+            margin-bottom: 1rem;
+
+
+            & p {
+                font-size: 0.938em;
+                color: $sixth-color;
+                font-family: "Roboto";
+                font-weight: 500;
+                padding-left: 0.533em;
+
+            }
+        }
+    }
+}

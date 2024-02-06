@@ -2,15 +2,16 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hotel Miranda</title>
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="{% static '/styles/styles.css'%}" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-    <script type="text/javascript" src="js/main.js" defer></script>
-    <script type="text/javascript" src="js/swiper/swiperAbout.js" defer></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'js/swiper/swiperAbout.js' %}" defer></script>
 </head>
 
 <body>
@@ -30,9 +31,9 @@
             </svg>
             <div class="nav__container">
                 <div class="nav__container--logo">
-                    <a href="{% url 'home'%}"><img class="nav__container--logo" src="assets/img/logoHotel.png" alt="logoH" /></a>
+                    <a href="{% url 'home'%}"><img class="nav__container--logo" src="{% static '/assets/img/logoHotel.png'%}" alt="logoH" /></a>
                 </div>
-                <img class="nav__container--name" src="assets/img/nameHotel.png" alt="nameHotel" />
+                <img class="nav__container--name" src="{% static '/assets/img/nameHotel.png'%}" alt="nameHotel" />
             </div>
             <div class="nav__menu">
                 <ul>
@@ -84,7 +85,7 @@
     </header>
     <section class="more">
         <video class="more__video" id="videoMiranda" controls muted>
-            <source src="assets/video/hotelMiranda.mp4" type="video/mp4" />
+            <source src="{% static '/assets/video/hotelMiranda.mp4'%}" type="video/mp4" />
         </video>
         <h1 class="more__title">
             Hello. Our hotel has been present for over 20 years. We make the best
@@ -184,7 +185,7 @@
             </div>
         </div>
         <div class="more__restaurant">
-            <img class="more__restaurant--img" src="assets/img/restaurant.png" alt="strong" />
+            <img class="more__restaurant--img" src="{% static '/assets/img/restaurant.png'%}" alt="strong" />
             <div class="more__restaurant--text">
                 <h3>RESTAURANT</h3>
                 <h1>Get Restaurant Facilities & Many Other More</h1>
@@ -202,7 +203,7 @@
             <div class="swiper-wrapper">
                 <div class="features__swiper--slider about__slider  swiper-slide">
                     <h1 class="features__swiper--slider--number about__number">01</h1>
-                    <img src="assets/img/rating.svg" alt="" />
+                    <img src="{% static '/assets/img/rating.svg' %}" alt="" />
                     <h1 class="features__swiper--slider--title about__text">
                         Have Having Rating
                     </h1>
@@ -213,7 +214,7 @@
                 </div>
                 <div class="features__swiper--slider about__slider  swiper-slide">
                     <h1 class="features__swiper--slider--number about__number">02</h1>
-                    <img src="assets/img/hour.svg" alt="" />
+                    <img src="{% static '/assets/img/hour.svg' %}" alt="" />
 
                     <h1 class="features__swiper--slider--title about__text">
                         Quiet Hours
@@ -246,7 +247,7 @@
                 </div>
                 <div class="features__swiper--slider about__slider  swiper-slide">
                     <h1 class="features__swiper--slider--number about__number">04</h1>
-                    <img src="assets/img/cancel.svg" alt="" />
+                    <img src="{% static '/assets/img/cancel.svg' %}" alt="" />
 
                     <h1 class="features__swiper--slider--title about__title about__text">
                         Free Cancellation
@@ -465,10 +466,10 @@
         <div class="swiper-container swiper swiperPag">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <img class="swiper-slider--img" src="assets/img/counterFirst.png" alt="">
+                <img class="swiper-slider--img" src="{% static '/assets/img/counterFirst.png' %}" alt="">
               </div>
               <div class="swiper-slide">
-                <img  class="swiper-slider--img" src="assets/img/counterSecond.png" alt="">
+                <img  class="swiper-slider--img" src="{% static '/assets/img/counterSecond.png' %}" alt="">
               </div>
             </div>
             <div class="swiper-pagination"></div>
@@ -615,7 +616,7 @@
                 </div>
             </div>
             <div class="info__contact--card mail">
-                <img src="assets/img/mail.svg" alt="" />
+                <img src="{% static '/assets/img/mail.svg' %}" alt="" />
                 <div class="info__contact--card--text">
                     <h1 class="info__contact--card--text--title">Phone Number</h1>
                     <p class="info__contact--card--text--description">
@@ -624,7 +625,7 @@
                 </div>
             </div>
             <div class="info__contact--card location">
-                <img src="assets/img/location.svg" alt="" />
+                <img src="{% static '/assets/img/location.svg' %}" alt="" />
                 <div class="info__contact--card--text">
                     <h1 class="info__contact--card--text--title">Phone Number</h1>
                     <p class="info__contact--card--text--description">

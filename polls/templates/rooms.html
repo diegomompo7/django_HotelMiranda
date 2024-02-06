@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Miranda</title>
-    <link rel="stylesheet" href="styles/styles.css" />
-    <script type="text/javascript" src="js/main.js" defer></script>
+    <link rel="stylesheet" href="{% static '/styles/styles.css'%}" />
+    <script type="text/javascript" src="{% static 'js/main.js' %}" defer></script>
 </head>
 <body>
   <div class="desktop-nav">
@@ -24,9 +25,9 @@
       </svg>
       <div class="nav__container">
         <div class="nav__container--logo">
-          <a href="{% url 'home'%}"><img class="nav__container--logo" src="assets/img/logoHotel.png" alt="logoH" /></a>
+          <a href="{% url 'home'%}"><img class="nav__container--logo" src="{% static '/assets/img/logoHotel.png' %}" alt="logoH" /></a>
         </div>
-        <img class="nav__container--name" src="assets/img/nameHotel.png" alt="nameHotel" />
+        <img class="nav__container--name" src="{% static '/assets/img/nameHotel.png' %}" alt="nameHotel" />
       </div>
       <div class="nav__menu">
         <ul>
@@ -79,7 +80,7 @@
       <section class="rooms">
         <div class="rooms__items">
           <div class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--have">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -136,12 +137,12 @@
               <p class="rooms__items--card--text--description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor..</p>
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book"href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book"href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
           <div  class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--text">
               <div class="rooms__items--card--have">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,12 +199,12 @@
               <p class="rooms__items--card--text--description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor..</p>
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book" href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book" href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
             <div class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--text">
               <div class="rooms__items--card--have">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -261,12 +262,12 @@
               
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book" href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book" href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
           <div class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--have">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -323,12 +324,12 @@
               <p class="rooms__items--card--text--description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor..</p>
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book"href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book"href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
           <div  class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--text">
               <div class="rooms__items--card--have">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -385,12 +386,12 @@
               <p class="rooms__items--card--text--description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor..</p>
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book" href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book" href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
             <div class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--text">
               <div class="rooms__items--card--have">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -448,12 +449,12 @@
               
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book" href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book" href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
           <div class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--have">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -510,12 +511,12 @@
               <p class="rooms__items--card--text--description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor..</p>
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book"href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book"href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
           <div  class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--text">
               <div class="rooms__items--card--have">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -572,12 +573,12 @@
               <p class="rooms__items--card--text--description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor..</p>
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book" href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book" href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
             <div class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--text">
               <div class="rooms__items--card--have">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -635,12 +636,12 @@
               
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book" href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book" href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
           <div class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--have">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -697,12 +698,12 @@
               <p class="rooms__items--card--text--description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor..</p>
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book"href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book"href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
           <div  class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--text">
               <div class="rooms__items--card--have">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -759,12 +760,12 @@
               <p class="rooms__items--card--text--description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor..</p>
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book" href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book" href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
             <div class="rooms__items--card">
-            <img src="assets/img/roomFake.jpg" alt="roomFake">
+            <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
             <div class="rooms__items--card--text">
               <div class="rooms__items--card--have">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -822,7 +823,7 @@
               
               <div class="rooms__items--card--text--price">
                 <h1 class="rooms__items--card--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="rooms__items--card--text--price--book" href="./roomDetail.html">Book Now</a>
+                <a class="rooms__items--card--text--price--book" href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
           </div>
@@ -969,14 +970,14 @@
               </div>      
           </div>
           <div class="info__contact--card mail">
-            <img src="assets/img/mail.svg" alt="">
+            <img src="{% static '/assets/img/mail.svg' %}" alt="">
             <div class="info__contact--card--text">
               <h1 class="info__contact--card--text--title">Phone Number</h1>
               <p class="info__contact--card--text--description">+987 876 765 76 577</p>
             </div>   
           </div>
           <div class="info__contact--card location">
-            <img src="assets/img/location.svg" alt="">
+            <img src="{% static '/assets/img/location.svg' %}" alt="">
             <div class="info__contact--card--text">
               <h1 class="info__contact--card--text--title">Phone Number</h1>
               <p class="info__contact--card--text--description">+987 876 765 76 577</p>

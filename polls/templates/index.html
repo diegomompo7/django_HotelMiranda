@@ -2,17 +2,18 @@
 <html lang="en">
 
 <head>
+  {% load static %}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hotel Miranda</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="{% static '/styles/styles.css'%}" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-  <script type="text/javascript" src="js/main.js" defer></script>
-  <script type="text/javascript" src="js/swiper/swiperHome.js" defer></script>
-  <script type="text/javascript" src="js/home.js" defer></script>
+  <script type="text/javascript" src="{% static 'js/main.js' %}"  defer></script>
+  <script type="text/javascript" src="{% static 'js/swiper/swiperHome.js' %}" defer></script>
+  <script type="text/javascript" src="{% static 'js/home.js' %}" defer></script>
 </head>
 
 <body id="body">
@@ -33,9 +34,9 @@
       </svg>
       <div class="nav__container">
         <div class="nav__container--logo">
-          <a href="{% url 'home'%}"><img class="nav__container--logo" src="assets/img/logoHotel.png" alt="logoH" /></a>
+          <a href="{% url 'home'%}"><img class="nav__container--logo" src="{% static 'assets/img/logoHotel.png' %}"  alt="logoH" /></a>
         </div>
-        <img class="nav__container--name" src="assets/img/nameHotel.png" alt="nameHotel" />
+        <img class="nav__container--name" src="{% static 'assets/img/nameHotel.png' %}" alt="nameHotel" />
       </div>
       <div class="nav__menu">
         <ul>
@@ -115,7 +116,7 @@
     </div>
     <div class="aboutUS__square">
       <div class="aboutUs__strong">
-        <img class="aboutUs__strong--img" src="assets/img/strongTeam.png" alt="strong" />
+        <img class="aboutUs__strong--img" src="{% static 'assets/img/strongTeam.png' %}" alt="strong" />
         <div class="aboutUs__strong--text">
           <svg width="68" height="50" viewBox="0 0 68 50" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -145,7 +146,7 @@
         </div>
       </div>
       <div class="aboutUs__luxury">
-        <img class="aboutUs__luxury--img" src="assets/img/luxury.jpg" alt="luxury" />
+        <img class="aboutUs__luxury--img" src="{% static 'assets/img/luxury.jpg' %}" alt="luxury" />
         <div class="aboutUs__luxury--text">
           <svg width="57" height="51" viewBox="0 0 57 51" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -219,7 +220,7 @@
                 stroke="#222222" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </div>
-          <img src="assets/img/roomFake.jpg" alt="roomFake">
+          <img src="{% static 'assets/img/roomFake.jpg' %}" alt="roomFake">
           <div class="rooms__swiper--slider--text">
             <div class="">
               <h1 class="rooms__swiper--slider--text--title">Minimal Duplex Room</h1>
@@ -285,7 +286,7 @@
                 stroke="#222222" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </div>
-          <img src="assets/img/roomFake.jpg" alt="roomFake">
+          <img src="{% static 'assets/img/roomFake.jpg' %}" alt="roomFake">
           <div class="rooms__swiper--slider--text">
             <div class="">
               <h1 class="rooms__swiper--slider--text--title">Minimal Duplex Room</h1>
@@ -351,7 +352,7 @@
                 stroke="#222222" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </div>
-          <img src="assets/img/roomFake.jpg" alt="roomFake">
+          <img src="{% static 'assets/img/roomFake.jpg' %}" alt="roomFake">
           <div class="rooms__swiper--slider--text">
             <div class="">
               <h1 class="rooms__swiper--slider--text--title">Minimal Duplex Room</h1>
@@ -379,7 +380,7 @@
         laboris nisi ut aliquip ex ea commodo consequat you have to understand this.</p>
     </div>
     <video class="videoIntro__video" id="videoMiranda" controls muted>
-      <source src="assets/video/hotelMiranda.mp4" type="video/mp4">
+      <source src="{% static 'assets/video/hotelMiranda.mp4' %}" type="video/mp4">
     </video>
     <a href="{% url 'rooms'%}" class="videoIntro__button">BOOK NOW</a>
   </section>
@@ -390,14 +391,14 @@
       <div class="swiper-wrapper">
         <div class="features__swiper--slider swiper-slide">
           <h1 class="features__swiper--slider--number">01</h1>
-          <img src="assets/img/rating.svg" alt="">
+          <img src="{% static 'assets/img/rating.svg' %}" alt="">
           <h1 class="features__swiper--slider--title">Have Having Rating</h1>
           <p class="features__swiper--slider--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
             do eiusmod tempor incididunt ut labore et dolore magna..</p>
         </div>
         <div class="features__swiper--slider swiper-slide">
           <h1 class="features__swiper--slider--number">02</h1>
-          <img src="assets/img/hour.svg" alt="">
+          <img src="{% static 'assets/img/hour.svg' %}" alt="">
 
           <h1 class="features__swiper--slider--title">Quiet Hours</h1>
           <p class="features__swiper--slider--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
@@ -422,7 +423,7 @@
         </div>
         <div class="features__swiper--slider swiper-slide">
           <h1 class="features__swiper--slider--number">04</h1>
-          <img src="assets/img/cancel.svg" alt="">
+          <img src="{% static 'assets/img/cancel.svg' %}" alt="">
 
 
           <h1 class="features__swiper--slider--title">Free Cancellation</h1>
@@ -499,7 +500,7 @@
   </section>
   <section class="menu">
 
-    <img class="menu__img" src="assets//img/donut.svg" alt="">
+    <img class="menu__img" src="{% static 'assets/img/donut.svg' %}" alt="">
 
 
     <h3 class="menu__subtitle">MENU</h3>
@@ -508,42 +509,42 @@
     <div class="menu__items swiper">
       <div class="swiper-wrapper">
         <div class="menu__items--card swiper-slide">
-          <img src="assets/img/menu.jpg" alt="">
+          <img src="{% static 'assets/img/menu.jpg' %}" alt="">
           <div class="menu__items--card--text">
             <h3>Eggs & Bacon</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor.</p>
           </div>
         </div>
         <div class="menu__items--card swiper-slide">
-          <img src="assets/img/coffee.jpg" alt="">
+          <img src="{% static 'assets/img/coffee.jpg' %}" alt="">
           <div class="menu__items--card--text">
             <h3>Tea or Cofee</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor.</p>
           </div>
         </div>
         <div class="menu__items--card swiper-slide ">
-          <img src="assets/img/oatmeal.png" alt="">
+          <img src="{% static 'assets/img/oatmeal.png' %}" alt="">
           <div class="menu__items--card--text">
             <h3>China Oatmeal</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor.</p>
           </div>
         </div>
         <div class="menu__items--card swiper-slide">
-          <img src="assets/img/menu.jpg" alt="">
+          <img src="{% static 'assets/img/menu.jpg' %}" alt="">
           <div class="menu__items--card--text">
             <h3>Eggs & Bacon</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor.</p>
           </div>
         </div>
         <div class="menu__items--card swiper-slide">
-          <img src="assets/img/coffee.jpg" alt="">
+          <img src="{% static 'assets/img/coffee.jpg' %}" alt="">
           <div class="menu__items--card--text">
             <h3>Tea or Cofee</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor.</p>
           </div>
         </div>
         <div class="menu__items--card swiper-slide">
-          <img src="assets/img/oatmeal.png" alt="">
+          <img src="{% static 'assets/img/oatmeal.png' %}" alt="">
           <div class="menu__items--card--text">
             <h3>China Oatmeal</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor.</p>
@@ -570,13 +571,13 @@
   <div class="swiper-container swiper swiperPag">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img class="swiper-slider--img" src="assets/img/cakes.jpg" alt="">
+        <img class="swiper-slider--img" src="{% static 'assets/img/cakes.jpg' %}" alt="">
       </div>
       <div class="swiper-slide">
-        <img class="swiper-slider--img" src="assets/img/food.png" alt="">
+        <img class="swiper-slider--img" src="{% static 'assets/img/food.png' %}" alt="">
       </div>
       <div class="swiper-slide">
-        <img class="swiper-slider--img" src="assets/img/salad.jpg" alt="">
+        <img class="swiper-slider--img" src="{% static 'assets/img/salad.jpg' %}" alt="">
       </div>
     </div>
     <div class="swiper-pagination"></div>
@@ -585,22 +586,22 @@
 
     <div class="stats__items">
       <div class="stats__items--card">
-        <img src="assets/img/project.svg" alt="">
+        <img src="{% static 'assets/img/project.svg' %}" alt="">
         <h1>84k<span>+</span></h1>
         <p>Projects are completed</p>
       </div>
       <div class="stats__items--card">
-        <img src="assets/img/backers.svg" alt="">
+        <img src="{% static 'assets/img/backers.svg' %}" alt="">
         <h1>10M<span>+</span></h1>
         <p>Active Backers Around World</p>
       </div>
       <div class="stats__items--card">
-        <img src="assets/img/categories.svg" alt="">
+        <img src="{% static 'assets/img/categories.svg' %}" alt="">
         <h1>02k<span>+</span></h1>
         <p>Categories Served</p>
       </div>
       <div class="stats__items--card">
-        <img src="assets/img/ideas.svg" alt="">
+        <img src="{% static 'assets/img/ideas.svg' %}" alt="">
         <h1>100M<span>+</span></h1>
         <p>Idea Raised Funds</p>
       </div>
@@ -745,14 +746,14 @@
         </div>
       </div>
       <div class="info__contact--card mail">
-        <img src="assets/img/mail.svg" alt="">
+        <img src="{% static 'assets/img/mail.svg' %}" alt="">
         <div class="info__contact--card--text">
           <h1 class="info__contact--card--text--title">Phone Number</h1>
           <p class="info__contact--card--text--description">+987 876 765 76 577</p>
         </div>
       </div>
       <div class="info__contact--card location">
-        <img src="assets/img/location.svg" alt="">
+        <img src="{% static 'assets/img/location.svg alt="">
         <div class="info__contact--card--text">
           <h1 class="info__contact--card--text--title">Phone Number</h1>
           <p class="info__contact--card--text--description">+987 876 765 76 577</p>

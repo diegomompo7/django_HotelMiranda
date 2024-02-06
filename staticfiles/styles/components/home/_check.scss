@@ -1,0 +1,84 @@
+.check{
+    background-color: $fourth-color;
+
+    &__form{
+        padding-top: 2.25rem;
+        margin-left: 1.25rem;
+        padding-bottom: 1.875rem;
+        width: 89.3%;
+
+        @include desktop() {
+            display: flex;
+            margin-left: 0;
+            width: 100%;
+            padding-left: 19.5%;
+            height: 9.5em;
+        }
+
+        & label{
+            display: flex;
+            font-size: 1rem;
+            flex-direction: column;
+            color: $first-color;
+            font-family: 'Roboto';
+            border-bottom: 0.0625em solid $third-color;
+
+            @include min405() {
+                width: 20.625em;
+                height: 4.68em;
+                margin-right: 1.875em;
+            }
+        }
+
+        & input{
+            background-color: transparent;
+            margin-top: 1.875em;
+            border: none;
+            color: $fifth-color;
+            font-size: 0.875rem;
+            font-family: 'Roboto';
+            margin-bottom: 1.214em;
+            width: 100%;
+            color-scheme: #BEAD8E;
+        }
+
+        &--arrival{
+            margin-bottom: 1.875em;
+        }
+        &--departure{
+            margin-bottom: 2.625em;
+        }
+
+        &--button{
+            width: 66.6%;
+            font-size: 0.875rem;
+            font-family: 'Archivo';
+            padding: 1.643em 0;
+            letter-spacing: 0.2em;
+            background-color: $third-color;
+            border: none;
+            font-weight: 700;
+
+            & a {
+                text-decoration: none;
+                color: #FFFFFF;
+            }
+
+            @include min405() {
+                width: 17.85em;
+                height: 4.28em;
+            }
+
+            @include desktop(){
+                margin-left: auto;
+                margin-right: 21%;
+         
+            }
+        }
+    }
+}
+::-webkit-calendar-picker-indicator {
+    filter: 
+    brightness(0) saturate(100%) invert(78%) sepia(3%) saturate(2671%) hue-rotate(2deg) brightness(89%) contrast(91%)
+    
+}

@@ -1,0 +1,59 @@
+.infoContact{
+    margin-top: 0.375em;
+
+    @include desktop(){
+        width: 100%;
+        display: flex;
+        max-width: 76.125em;
+        margin: 7.4375em auto 0;
+    }
+
+    &__items{
+        width: 94%;
+        max-width: 25.375em;
+        height: 14.75em;
+        margin: 0 auto;
+
+        @include desktop(){
+            margin-right: 2.9375em;
+        }
+
+        
+        &--number{
+            width:1em;
+            transform: translateY(-55%);
+            margin-left: auto;
+            font-size: 12.5rem;
+            font-family: 'Roboto';
+            color: $ninth-color;
+            z-index: -1;
+
+        }
+        &--card{
+            width: 100%;
+            display: flex;
+            padding-top: 3.313rem;
+            padding-left: 2rem;
+            z-index: 2;
+
+        &--text{
+            width: 100%;
+            z-index: 1;
+
+            & h1 {
+                font-size: 1.25em;
+                padding-left: 1.35em;
+                font-family: "Old Standard TT";
+                font-weight: 400;
+                padding-bottom: 1.6em
+            }
+            & p {
+                font-size: 0.875em;
+                padding-left: 1.929em;
+                font-family: "Roboto";
+                font-weight: 400
+            }
+        }
+    }
+    }
+}

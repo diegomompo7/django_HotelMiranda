@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Miranda</title>
-    <link rel="stylesheet" href="styles/styles.css" />
-    <script type="text/javascript" src="js/main.js" defer></script>
-    <script type="text/javascript" src="js/swiper/swiperOffer.js" defer></script>
+    <link rel="stylesheet" href="{% static '/styles/styles.css'%}" />
+    <script type="text/javascript" src="{% static 'js/main.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'js/swiper/swiperOffer.js' %}" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
@@ -28,9 +29,9 @@
       </svg>
       <div class="nav__container">
         <div class="nav__container--logo">
-          <a href="{% url 'home'%}"><img class="nav__container--logo" src="assets/img/logoHotel.png" alt="logoH" /></a>
+          <a href="{% url 'home'%}"><img class="nav__container--logo" src="{% static '/assets/img/logoHotel.png' %}" alt="logoH" /></a>
         </div>
-        <img class="nav__container--name" src="assets/img/nameHotel.png" alt="nameHotel" />
+        <img class="nav__container--name" src="{% static '/assets/img/nameHotel.png' %}" alt="nameHotel" />
       </div>
       <div class="nav__menu">
         <ul>
@@ -83,12 +84,12 @@
       <section class="offers">
         <div class="offers__items">
           <div class="offers__items--card">
-            <a href="./roomDetail.html"><img src="assets/img/roomFake.jpg" alt="roomFake"></a>
+            <a  href="{% url 'roomDetail' 1 %}"><img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake"></a>
             <div class="offers__items--card--info">
                 <div class="offers__items--card--info--principal">
                   <div class="offers__items--card--info--principal--text">
                     <h3>DOUBLE BED</h3>
-                    <h1> <a href="./roomDetail.html"> Luxury Double Bed</a></h1>
+                    <h1> <a  href="{% url 'roomDetail' 1 %}"> Luxury Double Bed</a></h1>
                   </div>
                   <div class="offers__items--card--info--principal--price">
                     <h1 class="offers__items--card--info--principal--price--original">$500 <p>/Night</p></h1>
@@ -278,17 +279,17 @@
                       </div>
                     </div>
                   </div>
-                  <a href="./roomDetail.html"><button type="submit" class="offers__items--card--info--description--button">BOOK NOW</button></a>
+                  <a  href="{% url 'roomDetail' 1 %}"><button type="submit" class="offers__items--card--info--description--button">BOOK NOW</button></a>
                 </div>
             </div>
           </div>
           <div class="offers__items--card">
-            <a href="./roomDetail.html"><img src="assets/img/roomFake.jpg" alt="roomFake"></a>
+            <a  href="{% url 'roomDetail' 1 %}"><img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake"></a>
             <div class="offers__items--card--info">
                 <div class="offers__items--card--info--principal">
                   <div class="offers__items--card--info--principal--text">
                     <h3>DOUBLE BED</h3>
-                    <h1> <a href="./roomDetail.html"> Luxury Double Bed</a></h1>
+                    <h1> <a  href="{% url 'roomDetail' 1 %}"> Luxury Double Bed</a></h1>
                   </div>
                   <div class="offers__items--card--info--principal--price">
                     <h1 class="offers__items--card--info--principal--price--original">$500 <p>/Night</p></h1>
@@ -478,17 +479,17 @@
                       </div>
                     </div>
                   </div>
-                  <a href="./roomDetail.html"><button type="submit" class="offers__items--card--info--description--button">BOOK NOW</button></a>
+                  <a  href="{% url 'roomDetail' 1 %}"><button type="submit" class="offers__items--card--info--description--button">BOOK NOW</button></a>
                 </div>
             </div>
           </div>
           <div class="offers__items--card">
-            <a href="./roomDetail.html"><img src="assets/img/roomFake.jpg" alt="roomFake"></a>
+            <a  href="{% url 'roomDetail' 1 %}"><img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake"></a>
             <div class="offers__items--card--info">
                 <div class="offers__items--card--info--principal">
                   <div class="offers__items--card--info--principal--text">
                     <h3>DOUBLE BED</h3>
-                    <h1> <a href="./roomDetail.html"> Luxury Double Bed</a></h1>
+                    <h1> <a  href="{% url 'roomDetail' 1 %}"> Luxury Double Bed</a></h1>
                   </div>
                   <div class="offers__items--card--info--principal--price">
                     <h1 class="offers__items--card--info--principal--price--original">$500 <p>/Night</p></h1>
@@ -678,17 +679,17 @@
                       </div>
                     </div>
                   </div>
-                  <a href="./roomDetail.html"><button type="submit" class="offers__items--card--info--description--button">BOOK NOW</button></a>
+                  <a  href="{% url 'roomDetail' 1 %}"><button type="submit" class="offers__items--card--info--description--button">BOOK NOW</button></a>
                 </div>
             </div>
           </div>
                     <div class="offers__items--card">
-            <a href="./roomDetail.html"><img src="assets/img/roomFake.jpg" alt="roomFake"></a>
+            <a  href="{% url 'roomDetail' 1 %}"><img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake"></a>
             <div class="offers__items--card--info">
                 <div class="offers__items--card--info--principal">
                   <div class="offers__items--card--info--principal--text">
                     <h3>DOUBLE BED</h3>
-                    <h1> <a href="./roomDetail.html"> Luxury Double Bed</a></h1>
+                    <h1> <a  href="{% url 'roomDetail' 1 %}"> Luxury Double Bed</a></h1>
                   </div>
                   <div class="offers__items--card--info--principal--price">
                     <h1 class="offers__items--card--info--principal--price--original">$500 <p>/Night</p></h1>
@@ -878,7 +879,7 @@
                       </div>
                     </div>
                   </div>
-                  <a href="./roomDetail.html"><button type="submit" class="offers__items--card--info--description--button">BOOK NOW</button></a>
+                  <a  href="{% url 'roomDetail' 1 %}"><button type="submit" class="offers__items--card--info--description--button">BOOK NOW</button></a>
                 </div>
             </div>
           </div>
@@ -891,7 +892,7 @@
         <div class="popular__swiper swiper swiperNav">
           <div class="swiper-wrapper">
             <div class="popular__swiper--slider swiper-slide">
-              <img src="assets/img/roomFake.jpg" alt="roomFake">
+              <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
               <div class="popular__swiper--slider--have">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -948,12 +949,12 @@
               <p class="popular__swiper--slider--text--description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor..</p>
               <div class="popular__swiper--slider--text--price">
                 <h1 class="popular__swiper--slider--text--price--cost">$345 <p>/Night</p></h1>
-                <a class="popular__swiper--slider--text--price--book"href="./roomDetail.html">Book Now</a>
+                <a class="popular__swiper--slider--text--price--book" href="{% url 'roomDetail' 1 %}">Book Now</a>
               </div>
             </div>
             </div>
             <div class="popular__swiper--slider swiper-slide">
-              <img src="assets/img/roomFake.jpg" alt="roomFake">
+              <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
               <div class="popular__swiper--slider--have">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -1010,12 +1011,12 @@
                 <p class="popular__swiper--slider--text--description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor..</p>
                 <div class="popular__swiper--slider--text--price">
                   <h1 class="popular__swiper--slider--text--price--cost">$345 <p>/Night</p></h1>
-                  <a class="popular__swiper--slider--text--price--book"href="./roomDetail.html">Book Now</a>
+                  <a class="popular__swiper--slider--text--price--book" href="{% url 'roomDetail' 1 %}">Book Now</a>
                 </div>
               </div>
             </div>
             <div class="popular__swiper--slider swiper-slide">
-              <img src="assets/img/roomFake.jpg" alt="roomFake">
+              <img src="{% static '/assets/img/roomFake.jpg' %}" alt="roomFake">
               <div class="popular__swiper--slider--have">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -1072,7 +1073,7 @@
                 <p class="popular__swiper--slider--text--description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor..</p>
                 <div class="popular__swiper--slider--text--price">
                   <h1 class="popular__swiper--slider--text--price--cost">$345 <p>/Night</p></h1>
-                  <a class="popular__swiper--slider--text--price--book"href="./roomDetail.html">Book Now</a>
+                  <a class="popular__swiper--slider--text--price--book" href="{% url 'roomDetail' 1 %}">Book Now</a>
                 </div>
               </div>
             </div>
@@ -1213,14 +1214,14 @@
               </div>      
           </div>
           <div class="info__contact--card mail">
-            <img src="assets/img/mail.svg" alt="">
+            <img src="{% static '/assets/img/mail.svg' %}" alt="">
             <div class="info__contact--card--text">
               <h1 class="info__contact--card--text--title">Phone Number</h1>
               <p class="info__contact--card--text--description">+987 876 765 76 577</p>
             </div>   
           </div>
           <div class="info__contact--card location">
-            <img src="assets/img/location.svg" alt="">
+            <img src="{% static '/assets/img/location.svg' %}" alt="">
             <div class="info__contact--card--text">
               <h1 class="info__contact--card--text--title">Phone Number</h1>
               <p class="info__contact--card--text--description">+987 876 765 76 577</p>
