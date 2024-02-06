@@ -1,0 +1,119 @@
+.header{
+    background-color: $eleventh-color;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    color: $first-color;
+    z-index: 1;
+
+
+
+    &__subtitle{
+        font-size: 0.813rem;
+        font-family: 'Archivo';
+        padding-top: 5.679em;
+        margin-left: 1.538em;
+        letter-spacing: 0.215em;
+        line-height: 1.385em;
+        width: 63%;
+
+        @include desktop(){
+           font-size: 0.875rem;
+           margin-left: 19.5%;
+           padding-top: 14.153em
+   
+        }
+    }
+    &__title{
+        font-size: 3.5rem;
+        font-family: 'Old Standard TT';
+        padding: 0.714em 0;
+        margin-left: 0.357em;
+        width: 88%;
+        font-weight: 400;
+        line-height: 1.071em;
+
+        &--rest{
+            padding-top: 0.286em;
+        }
+
+  
+
+        
+        @include desktop(){
+            line-height: 1.08em;
+            font-size: 7.5rem;
+            margin-left: 19.5%;
+            width: 6.66em;
+            padding: 0.35em 0 0.26em 0;
+
+            &--rest{
+                font-size: 4.5rem;
+               
+            }
+         }
+    }
+    &__options{
+        @include desktop(){
+            
+                margin-left: 19.5%;
+        }
+        & button {
+            color: $first-color;
+            font-family: 'Archivo';
+            margin-left: 1.429em;
+            font-size: 0.875rem;
+            width: 15.42em;
+            padding: 1.643em 0;
+            letter-spacing: 0.2em;
+
+        }
+        &--take{
+            margin-bottom: 1.714em;
+            background-color: $third-color;
+            border: none;
+            font-weight: 700;
+
+            
+        }
+        &--more{
+            margin-bottom: 5.714em;
+            background-color: transparent;
+            border: 0.0625em solid rgba($color: $first-color, $alpha: 0.33);
+            font-weight: 700;
+        }
+    }
+    &__nav{
+        background-color: $first-color;
+        color: $fourth-color;
+        display: flex;
+        padding: 1rem;
+        margin-right: 1.25rem;
+        justify-content:  center;
+        width: max-content;
+        margin-left: auto;
+        font-size: 1rem;
+        font-family: "Archivo";
+        font-weight: 700;
+
+        @include desktop(){
+            width: 13.7em;
+            margin-right: 19.5%;
+            z-index: 5;
+        }
+
+        & a {
+            padding: 0 0.68em;
+            text-decoration: none;
+            pointer-events: initial;
+            
+        }
+
+        &--home, & p{
+            color: $fourth-color;
+        }
+        &--actual{
+            color: $third-color;
+        }
+    }
+}

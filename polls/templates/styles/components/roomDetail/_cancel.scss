@@ -1,0 +1,39 @@
+.cancel{
+    width: 89.3%;
+    margin: 0 auto;
+    max-width: 48.125em;
+
+    @include desktop(){
+        margin-left: 19.5%;
+    }
+
+    &__title {
+        font-size: 1.875rem;
+        font-weight: 400;
+        font-family: "Old Standard TT";
+        padding-bottom: 0.433em;
+        color: $fourth-color;
+
+        @include desktop(){
+            margin-top: 1.566em;
+        }
+    }
+    &__line{
+        border: 0.0625em solid $fourteenth-color;
+    }
+    &__text{
+        white-space: break-word;
+        font-size: 1rem;
+        font-family: "Roboto";
+        margin-top: 2.125em;
+        line-height: 1.5em;
+        color: $sixth-color;
+        margin-bottom: 4.286em;
+
+        @include desktop(){
+            width: 86%;
+            margin-bottom: 7.6875em;
+        }
+
+      }
+}

@@ -1,16 +1,21 @@
 from ..models.Room import Room
 from ..models.Booking import Booking
 from django.http import HttpResponse, Http404, JsonResponse
-from django.utils.dateparse import parse_date
+from django.shortcuts import render
 
 def roomsList(request):
     rooms = Room.objects.all().values()
-    return HttpResponse(rooms)
-
+    return render(
+        request,
+        "../templates/rooms.html",
+    )
 def roomIdList(request, idRoom):
     try: 
         rooms = Room.objects.filter(id = idRoom).values()
-        return HttpResponse(rooms)
+        return render(
+            request,
+        "../templates/roomDetail.html",
+    )
 
     except Room.DoesNotExist:
         raise Http404("Room does not exist")
@@ -31,5 +36,13 @@ def roomsAvailable(request):
     
     print(idBookedRooms)
     
-    return HttpResponse(roomsAva)
+    return render(
+        request,
+        "../templates/rooms.html",
+    )
     
+def roomsOffer(request):
+    return render(
+            request,
+        "../templates/offers.html",
+    )

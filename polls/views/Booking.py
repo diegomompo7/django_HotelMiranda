@@ -5,7 +5,7 @@ from polls.models.Booking import Booking
 class FormBooking(forms.ModelForm):
     class Meta:
         model = Booking
-        fields =  ['Check_in', 'Check_Out', 'Name', 'Email', 'Phone']
+        fields =  ['check_in', 'check_out', 'name']
         
 
 

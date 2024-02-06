@@ -1,0 +1,174 @@
+.menu{
+
+    margin-left: 1.5rem;
+    margin-bottom: 3.75rem;
+    width: 89%;
+    overflow: hidden;
+
+    &__img{
+        position: relative;
+        left: 73%;
+
+        @include desktop(){
+            left: 4.16%;
+            width: 14.3125em;
+            height: 14.3125em;
+        }
+    } 
+    
+
+    &__subtitle{
+        font-size: 0.875rem;
+        letter-spacing: 0.2em;
+        color: $sixth-color;
+
+
+        @include desktop(){
+            padding-left: 22%;
+        }
+    }
+    &__title{
+        font-size: 3.5rem;
+        font-weight: 400;
+        font-family: 'Old Standard TT';
+        line-height: 1.071em;
+        padding-top: 0.429em;
+        padding-bottom: 0.554em;
+        color: $fourth-color;
+
+        @include desktop(){
+            font-size: 5rem;
+            padding-left: 21%;
+            line-height: auto;
+            padding-top: 0.425em;
+            padding-bottom: 0.5375em;
+        }
+    }
+    &__items{
+        @include desktop(){
+            max-width: 73.125em;
+            left: 6.25em;
+        }
+
+        swiper-button-lock {
+            display: block;
+        }
+
+        .swiper-slide {
+
+            display: flex;
+
+        }        
+        &--card{
+ 
+            margin-bottom: 1rem;
+
+
+            & img {
+                width: 7.5em;
+                height: 7.5em;
+            }
+
+            &--text{
+                display: flex;
+                flex-direction: column;
+            }
+            & h3{
+                font-size: 1.5rem;
+                font-weight: 400;
+                font-family: 'Old Standard TT';
+                line-height: 1em;
+                padding-left: 1.25em;
+                padding-bottom: 0.5em;
+                color: $fourth-color;
+            }
+            & p{
+                font-size: 0.875rem;
+                font-family: "Roboto";
+                color: $fourth-color;
+                line-height: 1.714em;
+                padding-left: 2.143em;
+                width: 90%;
+
+                @include desktop(){
+                    width: 75%
+    
+                }
+              }
+        }
+    }
+    &__button{
+
+        &--prev{
+            color: $second-color;
+            background-color: $ninth-color;
+            margin-right: 1rem;
+            border: none;
+            padding: 0.8125em 0.75em;
+            margin-left: 65%;
+
+            @include desktop(){
+                margin-left: 83%;
+                position: relative;
+                bottom: 33.125rem;
+                padding: 1.3125rem 1.25rem;
+            } 
+
+
+            & svg {
+                width: 0.875rem;
+                height: 0.875rem;
+                fill: $second-color;
+                @include desktop(){
+                    width: 1.5em;
+                    height: 1.5em;
+                }
+
+                &:hover{
+                    fill: $first-color;
+                }
+            }
+
+ 
+            &:hover{
+                background-color: $seventh-color;
+            }
+        }
+
+        &--next{
+            color: $second-color;
+            background-color: $ninth-color;
+            border: none;
+            padding: 0.8125em 0.75em;
+
+
+            @include desktop(){
+                padding: 1.3125rem 1.25rem;
+                position: relative;
+                bottom: 33.125rem;
+            } 
+
+
+            & svg {
+                width: 0.875rem;
+                height: 0.875rem;
+                fill: $second-color;
+                @include desktop(){
+                    width: 1.5em;
+                    height: 1.5em;
+                }
+
+                &:hover{
+                    fill: $first-color;
+                }
+            }
+
+             
+            &:hover{
+                background-color: $seventh-color;
+            }
+
+
+        }
+    }
+}

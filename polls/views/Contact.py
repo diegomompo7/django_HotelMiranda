@@ -1,13 +1,19 @@
 from django.http import HttpResponse
 from django import forms
 from polls.models.Contact import Contact
+from django.shortcuts import render
 
 class FormContact(forms.ModelForm):
     class Meta:
         model = Contact
-        fields =  ['fullName', 'phone', 'email', 'subject', 'message']
+        fields =  ['name', 'surname', 'phone', 'email', 'subject', 'message']
         
-
+def contact(request):
+    return render(
+        request,
+        "../templates/contact.html",
+)
+    
 
 def createContact(request):
     if request.method == 'POST':

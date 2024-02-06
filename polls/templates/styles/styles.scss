@@ -1,0 +1,43 @@
+@import 'utilities/variables';
+@import 'utilities/mixins';
+@import 'components/nav';
+@import 'components/footer';
+@import 'components/header';
+@import 'components/swiper';
+@import 'components/info';
+@import 'components/home/check';
+@import 'components/home/aboutUs';
+@import 'components/home/rooms';
+@import 'components/home/videoIntro';
+@import 'components/features';
+@import 'components/home/menu';
+@import 'components/home/stats';
+@import 'components/about/more';
+@import 'components/about/counter';
+@import 'components/rooms/roomsList';
+@import 'components/roomDetail/description';
+@import 'components/roomDetail/statsReverse';
+@import 'components/roomDetail/amenities';
+@import 'components/roomDetail/userInfo';
+@import 'components/roomDetail/cancel';
+@import 'components/roomDetail/related';
+@import 'components/offers/offers';
+@import 'components/offers/popular';
+@import 'components/contact/infoContact';
+@import 'components/contact/formContact';
+@import 'base/fonts';
+
+html,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  @include desktop(){
+    overflow-x: visible;
+  }
+  
+}
+body {
+  min-width: 320px;
+}

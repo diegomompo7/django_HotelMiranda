@@ -1,0 +1,170 @@
+.info {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 0 0),
+    url(../../assets/img/backgroundInfo.png);
+  margin-top: 3.5rem;
+
+  @include desktop(){
+    display: flex;
+    justify-content: center;
+    padding-right: 6.5%;
+    padding-top: 6.25em;
+    padding-bottom: 6.25em;
+
+  }
+
+  &__hotel {
+    padding-top: 2em;
+    padding-left: 1.375rem;
+    width: 94%;
+
+    @include desktop(){
+      width: 17.3125em;
+      margin-right: 5.1%;
+
+
+    }
+
+    &--logo {
+      width: 73%;
+      display: flex;
+
+      @include desktop(){
+        width: 100%;
+      }
+
+      &--rectangule {
+        background-color: $third-color;
+        width: 2em;
+
+        text-align: center;
+        font-size: 2.5rem;
+        color: $first-color;
+        font-family: "Archivo";
+        font-weight: 700;
+        padding: 0.425em 0;
+      }
+
+      &--text {
+        font-size: 1.625rem;
+        margin-top: 0.5em;
+        margin-left: 1.077em;
+        font-family: "Archivo";
+      }
+    }
+    &--description {
+      margin-top: 2.938em;
+      font-size: 1rem;
+      color: $sixth-color;
+      line-height: 1.625em;
+      font-family: "Archivo";
+      margin-bottom: 2em;
+
+    }
+    &--social {
+      display: flex;
+
+      & div {
+        margin-right: 0.625em;
+        padding: 0.5em 0.5em;
+        text-align: center;
+      }
+      &--rest {
+        background-color: $ninth-color;
+
+        path{
+          fill: $sixth-color;
+        }
+
+        &:hover{
+        background-color: $third-color;
+        }
+
+        &:hover path{
+          fill: $first-color;
+        }
+ 
+      }
+ 
+    }
+  }
+  &__services {
+    margin-top: 2rem;
+    padding-left: 1.375rem;
+
+    @include desktop(){
+      width: 26.1875em;
+      margin-right:4.5%;
+ 
+
+    }
+
+    &--title {
+      font-size: 1.5rem;
+      font-family: "Old Standard TT";
+      font-weight: 400;
+      margin-bottom: 0.357em;
+      margin-bottom: 1em;
+    }
+
+    &--lists {
+      display: flex;
+      & ul {
+        list-style: none;
+        color: $sixth-color;
+        font-size: 1rem;
+        font-family: "Roboto";
+      }
+      & li::before {
+        content: "+ ";
+      }
+      & li {
+        width: 70%;
+        padding-bottom: 2.5em;
+        margin-right: 4.4375em;
+
+        @include desktop(){
+          margin-right: 8.9375em;
+          padding-bottom: 2em;
+        }
+     
+      }
+    }
+  }
+  &__contact {
+    margin-top: 2rem;
+    padding-left: 1.375rem;
+
+    &--title {
+      font-size: 1.5rem;
+      font-family: "Old Standard TT";
+      font-weight: 400;
+      margin-bottom: 0.357em;
+      margin-bottom: 1.083em;
+    }
+
+    &--card {
+        display: flex;
+       
+      &--text {
+        &--title {
+          font-size: 1.25rem;
+          font-family: "Old Standard TT";
+          font-weight: 400;
+          margin-left: 1.050em;
+        }
+        &--description {
+            font-size: 0.875rem;
+            font-family: "Roboto";
+            font-weight: 400;
+            margin-left: 1.5em;
+          }
+      }
+    }
+  }
+}
+.phone, .mail{
+    margin-bottom: 3.688rem;
+}
+.location{
+    padding-bottom: 2em;
+}
