@@ -6,7 +6,7 @@ class RoomType(models.TextChoices):
     SINGLE_BED = "Single Bed", "Single Bed"
     DOUBLE_BED = "Double Bed", "Double Bed"
     DOUBLE_SUPERIOR = "Double Superior", "Double Superior"
-    SUITE = "Suite"
+    SUITE = "Suite", "Suite"
     
 class OfferRoom(models.TextChoices):
     YES = "YES", "YES"

@@ -4,7 +4,7 @@ from django.core.validators import RegexValidator
 class JobUser(models.TextChoices):
     MANAGER = "Manager", "Manager"
     RECEPTIONIST = "Receptionist", "Receptionist"
-    CLEANING_ROOM = "Cleaning Room", "Cleaning Room"
+    ROOM_SERVICE = "Room Service", "Room Service"
     
 class StatusUser(models.TextChoices):
     ACTIVE = "ACTIVE", "ACTIVE"

@@ -105,5 +105,8 @@
       font-family: 'Oswald';
       padding: 0.857em 1.143em;
     }
+    & a:active{
+      background-color: red;
+    }
   }
 }
