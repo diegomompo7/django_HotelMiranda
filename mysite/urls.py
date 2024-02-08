@@ -15,7 +15,8 @@ urlpatterns = [
     path("rooms/", roomsList, name="rooms"),
     path("room/<int:idRoom>/", roomIdList, name="roomDetail"),
     path("rooms/available", roomsAvailableInRange, name="roomAvailableRange"),
-    path("offer/", roomsOffer, name="roomsOffer"), 
+    path("offer/", roomsOffer,name="roomsOffer"),
+    path("popular/", mostPopularRooms, name="mostPopularRooms"),
     path("contacts/", contact, name="contacts"),
     path("checkAva/", checkAvailability, name="checkAva"),
 ]

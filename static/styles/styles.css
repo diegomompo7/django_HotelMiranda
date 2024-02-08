@@ -2049,6 +2049,7 @@
 }
 @media screen and (min-width: 62.5rem) {
   .related {
+    max-width: 80%;
     margin-left: 19.5%;
     margin-bottom: 7.6875em;
   }
@@ -2071,7 +2072,7 @@
 }
 @media screen and (min-width: 62.5rem) {
   .related__swiper {
-    max-width: 46.25em;
+    max-width: 100%;
   }
 }
 .related__swiper .swiper-button-next, .related__swiper .swiper-button-prev {
