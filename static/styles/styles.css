@@ -559,9 +559,6 @@
   background-color: #BEAD8E;
   border: none;
   font-weight: 700;
-}
-.check__form--button a {
-  text-decoration: none;
   color: #FFFFFF;
 }
 @media screen and (min-width: 25.3125rem) {
@@ -1727,6 +1724,9 @@
   font-size: 0.875rem;
   font-family: "Oswald";
   padding: 0.857em 1.143em;
+}
+.rooms__page a:active {
+  background-color: red;
 }
 
 .secondDescription__text {

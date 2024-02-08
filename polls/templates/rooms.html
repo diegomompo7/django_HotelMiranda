@@ -145,11 +145,19 @@
           </div>
           {% endfor %}
         <div class="rooms__page">
-          <a href="{% url 'rooms' %}?page={{pageNumber|add:'-1'}}"><button><<</button></a>
+          {% if request.GET.checkin and request.GET.checkout %}
+            <a href="{{  request.path }}?checkin={{ request.GET.checkin }}&checkout={{ request.GET.checkout }}&page={{pageNumber|add:'-1'}}"><button><<</button></a>
           {% for page in pages %}
-            <a href="{% url 'rooms' %}?page={{page}}" active><button>{{page}}</button></a>
+              <a href="{{  request.path }}?checkin={{ request.GET.checkin }}&checkout={{ request.GET.checkout }}&page={{page}}" active><button>{{page}}</button></a>
+            {% endfor %}
+          <a href="{{  request.path }}?checkin={{ request.GET.checkin }}&checkout={{ request.GET.checkout }}&page={{pageNumber|add:'+1'}}"><button>>></button></a>
+          {% else %}
+          <a href="{{  request.path }}?page={{pageNumber|add:'-1'}}"><button><<</button></a>
+          {% for page in pages %}
+            <a href="{{  request.path }}?page={{page}}" active><button>{{page}}</button></a>
           {% endfor %}
-          <a href="{% url 'rooms' %}?page={{pageNumber|add:'+1'}}"><button>>></button></a>
+          <a href="{{  request.path }}?page={{pageNumber|add:'+1'}}"><button>>></button></a>
+          {% endif %}
         </div>
         {% else %}
         <p>There aren't rooms.</p>

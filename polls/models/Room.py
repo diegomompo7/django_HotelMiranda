@@ -33,3 +33,5 @@ class Room(models.Model):
     ])
     cancellation = models.TextField(max_length = 255)
     status = models.CharField(max_length = 20, choices = StatusRoom.choices)
+    
+    

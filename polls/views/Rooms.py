@@ -1,6 +1,7 @@
 import json
 from ..models.Room import Room
 from ..models.Booking import Booking
+from ..models.Form import CheckAvailabilityForm
 from ..models.Amenity import Amenity
 from django.http import HttpResponse, Http404, JsonResponse
 from django.core.paginator import Paginator, EmptyPage
@@ -8,7 +9,7 @@ from django.shortcuts import render
 
 def roomsList(request):
     pageNumber = int(request.GET.get('page', 1))
-    rooms = Room.objects.all().values()
+    rooms = Room.objects.filter(status = 'Available').values()
     
     roomsPerPage = 10
     
@@ -18,8 +19,6 @@ def roomsList(request):
     roomsPage = rooms[startIndex:endIndex]
     
     totalPages = (len(rooms) + roomsPerPage -1) // roomsPerPage
-    
-    print(totalPages)
 
     return render(
         request,
@@ -35,29 +34,41 @@ def roomIdList(request, idRoom):
     {"room" : room, "amenities" : amenities}
     )
     
-def roomsAvailable(request):
-    checkInDate = parse_date(request.GET.get("checkin"))
-    checkOutDate = parse_date(request.GET.get("checkout"))
+def roomsAvailableInRange(request):
     
-    if not checkInDate or not checkOutDate:
-        return JsonResponse({'error': 'Invalid dates provided'}, status=400)
+    checkInForm = request.GET.get('checkin')
+    checkOutForm = request.GET.get('checkout')
+    pageNumber = int(request.GET.get('page', 1))
     
+    roomExclude = Booking.objects.filter(
+    check_in__lt=checkOutForm,
+    check_out__gt=checkInForm
+    ).values_list('room_id', flat=True)
     
-    bookingBooked = Booking.objects.filter(check_in__lt = checkOutDate.isoformat(), check_out__gt = checkInDate.isoformat())
+    bookingsAvailable = Booking.objects.exclude(room_id__in=roomExclude).values_list('room_id', flat=True).distinct()
     
-    idBookedRooms = bookingBooked.values_list('room_id', flat=True)
+    print(bookingsAvailable)
+    rooms = Room.objects.filter(id__in=bookingsAvailable)
     
-    roomsAva = Room.objects.all().exclude(id__in = idBookedRooms).values()
+    roomsPerPage = 10
+    print(rooms)
     
-    print(idBookedRooms)
+    startIndex = (pageNumber - 1) * 10
+    endIndex = startIndex + roomsPerPage
     
+    roomsPage = rooms[startIndex:endIndex].values()
+    
+    totalPages = (len(rooms) + roomsPerPage -1) // roomsPerPage
+    
+
     return render(
         request,
         "../templates/rooms.html",
-    )
+        {"roomsList": roomsPage, "pages": range(1, totalPages+1), "pageNumber":pageNumber, "roomsList": roomsPage}
+    )  
     
 def roomsOffer(request):
     return render(
             request,
         "../templates/offers.html",
-    )
+)

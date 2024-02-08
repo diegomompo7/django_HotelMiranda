@@ -58,11 +58,7 @@
             background-color: $third-color;
             border: none;
             font-weight: 700;
-
-            & a {
-                text-decoration: none;
-                color: #FFFFFF;
-            }
+            color: #FFFFFF;
 
             @include min405() {
                 width: 17.85em;

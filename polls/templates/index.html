@@ -86,19 +86,19 @@
     </div>
   </header>
   <section class="check">
-    <form action="" class="check__form">
-      <label class="check__form--arrival">Arrival Date
+    <form action="{% url 'checkAva'%}" class="check__form" method="POST">
+      {% csrf_token %} 
+      <label class="check__form--arrival" for="{{ form.check_in.auto_id }}">{{ form.check_in.label }}
         <div>
-          <input type="date" name="" id=""/>
+        {{ form.check_in }}
         </div>
       </label>
-      <label class="check__form--departure">LeDeparture Date
+      <label class="check__form--departure" for="{{ from.check_out.auto_id }}">{{ form.check_out.label }}
         <div>
-          <input type="date" name="" id="" />
+        {{ form.check_out }}
         </div>
       </label>
-      <button class="check__form--button" type="submit">
-        <a href="./rooms.html">CHECK AVAILABILITY</a>
+      <button class="check__form--button" type="submit">CHECK AVAILABILITY
       </button>
     </form>
   </section>

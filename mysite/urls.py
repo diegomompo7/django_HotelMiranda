@@ -5,6 +5,7 @@ from polls.views.Booking import *
 from polls.views.Contact import *
 from polls.views.Home import *
 from polls.views.About import *
+from polls.views.Form import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -13,7 +14,8 @@ urlpatterns = [
     path("booking/", createBooking, name="bookings"),
     path("rooms/", roomsList, name="rooms"),
     path("room/<int:idRoom>/", roomIdList, name="roomDetail"),
-    path("rooms/available", roomsAvailable, name="roomsAvailable"),
+    path("rooms/available", roomsAvailableInRange, name="roomAvailableRange"),
     path("offer/", roomsOffer, name="roomsOffer"), 
-    path("contacts/", contact, name="contacts"), 
+    path("contacts/", contact, name="contacts"),
+    path("checkAva/", checkAvailability, name="checkAva"),
 ]
