@@ -30,7 +30,7 @@ class Booking(models.Model):
     hour_out = models.TimeField()
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     specialRequest = models.TextField(max_length = 255, null=True)
-    status = models.CharField(max_length = 20, choices = StatusBooking.choices,  default="Check In")
+    status = models.CharField(max_length = 50, choices = StatusBooking.choices,  default="Check In")
     
     class Meta:
         ordering = ['room_id', 'specialRequest']

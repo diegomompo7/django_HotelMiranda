@@ -83,15 +83,11 @@
           {% for room in roomsList %}
           <div class="rooms__items--card">
             <img src="{{room.photos.0}}" alt="roomFake">
-            {% for eachAmenity in amenities %}
-            {% if eachAmenity.room_id == room.id %}
             <div class="rooms__items--card--have">
-              {% for amenity in eachAmenity.amenity%}
-                {{amenity}} |
+              {% for eachAmenity in room.amenities.all%}
+                {{eachAmenity.amenity}} |
               {% endfor %}
             </div>
-            {% endif %}
-            {% endfor %}
             <div class="rooms__items--card--text">
               <h1 class="rooms__items--card--text--title">{{room.roomType}}</h1>
               <p class="rooms__items--card--text--description">{{room.description}}</p>

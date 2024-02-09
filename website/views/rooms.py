@@ -1,22 +1,16 @@
 import json
 from ..models.Room import Room
-from django.db.models import Count
 from ..models.Booking import Booking
+from django.db.models import Count, Value, CharField
 from ..Form import CheckAvailabilityForm
-from ..models.Amenity import Amenity
 from django.http import HttpResponse, Http404, JsonResponse
 from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render
+from django.db.models.functions import Concat
 
 def roomsList(request):
-    idRooms = []
     pageNumber = int(request.GET.get('page', 1))
-    rooms = Room.objects.filter(status = 'Available').values()
-    
-    for room in rooms:
-        idRooms.append(room['id'])
-        
-    amenities = Amenity.objects.filter(room__id__in = idRooms).select_related('room_id').values()
+    rooms = Room.objects.prefetch_related("amenities").filter(status = 'Available')
     
     roomsPerPage = 10
     
@@ -24,34 +18,25 @@ def roomsList(request):
     endIndex = startIndex + roomsPerPage
     
     roomsPage = rooms[startIndex:endIndex]
-    
+
     totalPages = (len(rooms) + roomsPerPage -1) // roomsPerPage
 
     return render(
         request,
-        "../templates/rooms.html",
-        {"roomsList": roomsPage, "amenities": amenities, "pages": range(1, totalPages+1), "pageNumber":pageNumber}
+        "../templates/website/rooms.html",
+        {"roomsList": roomsPage, "pages": range(1, totalPages+1), "pageNumber":pageNumber}
     )
+    
+    
 def roomIdList(request, idRoom):
-    idRooms = []
-    room = Room.objects.filter(id = idRoom).values()
-    amenities = Amenity.objects.filter(room = idRoom).values()
-    print(room)
+    room = Room.objects.prefetch_related("amenities").filter(id = idRoom)
  
-    relatedRooms = Room.objects.filter(roomType = room[0]['roomType'], status = "Available").order_by('?').values()
-    
-    for related in relatedRooms:
-        idRooms.append(related['id'])
-    
-    relatedAmenities = Amenity.objects.filter(room__id__in = idRooms).select_related('room_id').values()
-    
-    print(relatedRooms)
-    
-    
+    relatedRooms = Room.objects.prefetch_related("amenities").filter(roomType = room[0].roomType, status = "Available").order_by('?')
+
     return render(
         request,
-        "../templates/roomDetail.html",
-    {"room" : room, "amenities" : amenities, "relatedRooms": relatedRooms, "relatedAmenities": relatedAmenities}
+        "../templates/website/roomDetail.html",
+    {"room" : room, "relatedRooms": relatedRooms}
     )   
     
     
@@ -70,7 +55,7 @@ def roomsAvailableInRange(request):
     bookingsAvailable = Booking.objects.exclude(room_id__in=roomExclude).values_list('room_id', flat=True).distinct()
     
     print(bookingsAvailable)
-    rooms = Room.objects.filter(id__in=bookingsAvailable)
+    rooms = Room.objects.prefetch_related("amenities").filter(id__in=bookingsAvailable)
     
     roomsPerPage = 10
     print(rooms)
@@ -85,40 +70,28 @@ def roomsAvailableInRange(request):
 
     return render(
         request,
-        "../templates/rooms.html",
+        "../templates/website/rooms.html",
         {"roomsList": roomsPage, "pages": range(1, totalPages+1), "pageNumber":pageNumber, "roomsList": roomsPage}
     )  
     
 def roomsOffer(request):
-    idRooms = []
     prizeOffer = []
-    rooms = Room.objects.filter(offer = 'YES').values()
+    rooms = Room.objects.prefetch_related("amenities").filter(offer = 'YES')
     
     for room in rooms:
-        idRooms.append(room['id'])
-        prize = room["priceNight"] - (room["priceNight"] * room["discount"] / 100)
-        prizeOffer.append({"id" : room["id"], "prize" : prize})
+        prize = room.priceNight - (room.priceNight * room.discount / 100)
+        prizeOffer.append({"id" : room.id, "prize" : prize})
         
-        
-    amenities = Amenity.objects.filter(room__id__in = idRooms).select_related('room_id').values()
-    
     roomsPopular = mostPopularRooms()
     
     return render(
             request,
-        "../templates/offers.html",
-        {"roomsList": rooms, "amenities": amenities, "prizeOffer" : prizeOffer, "roomsPopular" : roomsPopular['roomsPopular'], "amenitiesPopular" : roomsPopular['amenities']}
+        "../templates/website/offers.html",
+        {"roomsList": rooms, "prizeOffer" : prizeOffer, "roomsPopular" : roomsPopular['roomsPopular']}
 )
        
 def mostPopularRooms():
+    roomsPopular = Room.objects.prefetch_related("amenities").all().annotate(
+    total_bookings=Count('booking')).order_by('-total_bookings')[:3]
     
-    idRooms = []
-    roomsPopular = Room.objects.all().select_related("room_id").annotate(
-    total_bookings=Count('booking')).order_by('-total_bookings')[:3].values()
-    
-    for room in roomsPopular:
-        idRooms.append(room['id'])
-        
-    amenities = Amenity.objects.filter(room__id__in = idRooms).select_related('room_id').values()
-
-    return {"roomsPopular": roomsPopular, "amenities": amenities}
+    return {"roomsPopular": roomsPopular}

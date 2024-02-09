@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import include, path
-from website.views.rooms import *
-from website.views.booking import *
-from website.views.contact import *
-from website.views.home import *
-from website.views.about import *
-from website.views.form import *
+from .views.rooms import *
+from .views.booking import *
+from .views.contact import *
+from .views.home import *
+from .views.about import *
+from .views.form import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),

@@ -172,15 +172,11 @@
         {% if handRooms%}
         {%for room in handRooms%}
         <div class="rooms__swiper--slider swiper-slide">
-          {% for eachAmenity in amenities %}
-          {% if eachAmenity.room_id == room.id %}
           <div class="rooms__swiper--slider--have">
-            {% for amenity in eachAmenity.amenity%}
-              {{amenity}} |
+            {% for eachAmenity in room.amenities.all%}
+            {{eachAmenity.amenity}} |
             {% endfor %}
           </div>
-          {% endif %}
-          {% endfor %}
           <img src={{room.photos.0}} alt="roomFake">
           <div class="rooms__swiper--slider--text">
             <div class="">

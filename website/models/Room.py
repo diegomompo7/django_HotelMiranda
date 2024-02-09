@@ -1,6 +1,9 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+class Amenity(models.Model):
+    id = models.AutoField(primary_key=True)
+    amenity = models.CharField(max_length=50)
 
 class RoomType(models.TextChoices):
     SINGLE_BED = "Single Bed", "Single Bed"
@@ -15,6 +18,8 @@ class OfferRoom(models.TextChoices):
 class StatusRoom(models.TextChoices):
     AVAILABLE = "Available", "Available"
     BOOKED = "Booked", "Booked"
+
+
     
 class Room(models.Model):
     id = models.AutoField(primary_key=True)
@@ -33,5 +38,4 @@ class Room(models.Model):
     ])
     cancellation = models.TextField(max_length = 255)
     status = models.CharField(max_length = 20, choices = StatusRoom.choices)
-    
-    
+    amenities = models.ManyToManyField(Amenity, related_name="rooms")

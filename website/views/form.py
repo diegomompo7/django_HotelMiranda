@@ -15,4 +15,4 @@ def checkAvailability(request):
     else:
         form = CheckAvailabilityForm()
 
-    return render(request, "../templates/index.html", {"form": form})  
+    return render(request, "../templates/website/index.html", {"form": form})  

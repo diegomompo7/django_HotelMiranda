@@ -219,12 +219,10 @@
       <h1 class="amenities__title">Amenities</h1>
       <hr class="amenities__line" />
       <div class="amenities__items">
-        {% for data in amenities %}
-        {% for amenity in data.amenity %}
+        {% for eachAmenity in data.amenities.all%}
         <div class="amenities__items--have">
-            <p>{{amenity}}</p>
+            <p>{{eachAmenity.amenity}}</p>
         </div>
-        {% endfor%}
         {% endfor%}
       </div>
     </section>
@@ -279,15 +277,11 @@
           {% for room in relatedRooms%}
           <div class="related__swiper--slider swiper-slide">
             <img src="{{room.photos.0}}" alt="roomFake" />
-            {% for eachAmenity in relatedAmenities %}
-            {% if eachAmenity.room_id == room.id %}
             <div class="related__swiper--slider--have">
-              {% for amenity in eachAmenity.amenity%}
-              {{amenity}} |
-            {% endfor %}
+              {% for eachAmenity in room.amenities.all%}
+                {{eachAmenity.amenity}} |
+              {% endfor %}
             </div>
-            {% endif %}
-            {% endfor %}
             <div class="related__swiper--slider--text">
               <h1 class="related__swiper--slider--text--title">
                 {{room.roomType}}

@@ -11,7 +11,7 @@ class FormContact(forms.ModelForm):
 def contact(request):
     return render(
         request,
-        "../templates/contact.html",
+        "../templates/website/contact.html",
 )
     
 

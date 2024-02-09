@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'hotelMiranda.urls'
+ROOT_URLCONF = 'website.urls'
 
 TEMPLATES = [
     {

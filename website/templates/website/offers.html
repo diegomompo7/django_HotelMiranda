@@ -106,17 +106,13 @@
                 <div class="offers__items--card--info--description">
                   <div class="offers__items--card--info--description--text">
                     <p class="offers__items--card--info--description--text--desc">{{room.description}}</p>
-                    {% for eachAmenity in amenities %}
-                    {% if eachAmenity.room_id == room.id %}
                     <div class="offers__items--card--info--description--text--have">
-                      {% for amenity in eachAmenity.amenity%}
+                      {% for eachAmenity in room.amenities.all%}
                       <div class="amenities__items--have">
-                        {{amenity}}
+                        {{eachAmenity.amenity}}
                       </div>
                       {% endfor %}
                     </div>
-                    {% endif %}
-                    {% endfor %}
                   </div>
                   <a  href="{% url 'roomDetail' room.id %}"><button type="submit" class="offers__items--card--info--description--button">BOOK NOW</button></a>
                 </div>
@@ -138,15 +134,11 @@
             {%for room in roomsPopular%}
             <div class="popular__swiper--slider swiper-slide">
               <img src="{{room.photos.0}}" alt="roomFake">
-              {% for eachAmenity in amenitiesPopular %}
-              {% if eachAmenity.room_id == room.id %}
               <div class="popular__swiper--slider--have">
-                {% for amenity in eachAmenity.amenity%}
-                {{amenity}} |
+                {% for eachAmenity in room.amenities.all%}
+                {{eachAmenity.amenity}} |
                 {% endfor %}
               </div>
-              {% endif %}
-              {% endfor %}
               <div class="popular__swiper--slider--text">
                 <h1 class="popular__swiper--slider--text--title">{{room.roomType}}</h1>
                 <p class="popular__swiper--slider--text--description">{{room.description}}</p>
