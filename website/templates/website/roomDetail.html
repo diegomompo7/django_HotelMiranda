@@ -153,56 +153,47 @@
 
       <div class="statsReserve__reserve">
         <h1 class="statsReserve__reserve--title">Check Availabity</h1>
-        <form action="" class="statsReserve__reserve--form">
+        <form action="{% url 'booking' data.id %}" class="statsReserve__reserve--form" method="POST">
+          {% csrf_token %} 
           <label class="statsReserve__reserve--form--label"
-            >Check In
+            >{{form.check_in.label}}
             <div>
-              <input type="date" name="" id="" />
+              {{form.check_in}}
             </div>
           </label>
           <label class="statsReserve__reserve--form--label"
-            >Check Out
+          >{{form.check_out.label}}
+          <div>
+            {{form.check_out}}
+          </div>
+        </label>
+          <label class="statsReserve__reserve--form--label"
+            >{{form.name.label}}
             <div>
-              <input type="date" name="" id="" />
+              {{form.name}}
             </div>
           </label>
           <label class="statsReserve__reserve--form--label"
-            >Name
+            >{{form.email.label}}
             <div>
-              <input
-                type="name"
-                name=""
-                id=""
-                placeholder="Introduce your name..."
-              />
+              {{form.email}}
             </div>
           </label>
           <label class="statsReserve__reserve--form--label"
-            >Email
+            >{{form.phone.label}}
             <div>
-              <input
-                type="email"
-                name=""
-                id=""
-                placeholder="Introduce your email..."
-              />
+              {{form.phone}}
             </div>
           </label>
           <label class="statsReserve__reserve--form--label"
-            >Phone
-            <div>
-              <input
-                type="text"
-                name=""
-                id=""
-                placeholder="Introduce your phone..."
-              />
-            </div>
-          </label>
+          >{{form.specialRequest.label}}
+          <div>
+            {{form.specialRequest}}
+          </div>
+        </label>
           <button
             class="statsReserve__reserve--form--button"
             type="submit"
-            onclick="sendAlert()"
           >
             CHECK AVAILABILITY
           </button>

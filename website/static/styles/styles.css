@@ -1743,7 +1743,7 @@
   .secondDescription__text {
     max-width: 48.0625em;
     font-size: 1rem;
-    margin: 0 0 2.6875em 19.5%;
+    margin: 0 0 2.6875em 16%;
     padding: 0;
     line-height: 1.5em;
   }
@@ -1755,6 +1755,7 @@
     display: flex;
     max-width: 73.4375em;
     margin: 0 auto;
+    height: 732px;
   }
 }
 .statsReserve__stats--firstDescription {
@@ -1866,6 +1867,11 @@
   width: 77.6%;
   margin: 0 auto;
 }
+@media screen and (min-width: 62.5rem) {
+  .statsReserve__reserve--form {
+    width: 93%;
+  }
+}
 .statsReserve__reserve--form--label {
   font-size: 0.875rem;
   font-family: "Archivo";
@@ -1908,6 +1914,7 @@
   .amenities {
     margin-bottom: 7.6875em;
     margin-left: 19.5%;
+    width: 41.3%;
   }
 }
 .amenities__title {

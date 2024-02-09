@@ -7,6 +7,7 @@ from django.http import HttpResponse, Http404, JsonResponse
 from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render
 from django.db.models.functions import Concat
+from ..Form import FormBooking
 
 def roomsList(request):
     pageNumber = int(request.GET.get('page', 1))
@@ -30,13 +31,15 @@ def roomsList(request):
     
 def roomIdList(request, idRoom):
     room = Room.objects.prefetch_related("amenities").filter(id = idRoom)
+    
+    form = FormBooking(request.POST)
  
     relatedRooms = Room.objects.prefetch_related("amenities").filter(roomType = room[0].roomType, status = "Available").order_by('?')
 
     return render(
         request,
         "../templates/website/roomDetail.html",
-    {"room" : room, "relatedRooms": relatedRooms}
+    {"room" : room, "relatedRooms": relatedRooms, "form" : form}
     )   
     
     

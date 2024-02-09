@@ -14,9 +14,16 @@
   <script type="text/javascript" src="{% static 'js/main.js' %}"  defer></script>
   <script type="text/javascript" src="{% static 'js/swiper/swiperHome.js' %}" defer></script>
   <script type="text/javascript" src="{% static 'js/home.js' %}" defer></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/toastr.css' %}" media="all">
+  <script type="text/javascript" src="{% static 'js/toastr.min.js' %}"></script> 
 </head>
 
 <body id="body">
+  {% if message %}
+    <div id="alert" style="display: none;">{{ message}}</div>
+  {% endif %}
+
   <div class="desktop-nav">
     <p class="desktop-nav__text"> We Make Your Feel Comfortable</p>
     <nav class="nav">
@@ -86,7 +93,7 @@
     </div>
   </header>
   <section class="check">
-    <form action="{% url 'checkAva'%}" class="check__form" method="POST">
+    <form id="checkForm" action="{% url 'checkAva'%}" class="check__form" method="POST">
       {% csrf_token %} 
       <label class="check__form--arrival" for="{{ form.check_in.auto_id }}">{{ form.check_in.label }}
         <div>

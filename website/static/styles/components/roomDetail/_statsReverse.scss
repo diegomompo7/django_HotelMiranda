@@ -3,8 +3,9 @@
     width: 100%;
     display: flex;
     max-width: 73.4375em;
-
     margin: 0 auto;
+    height: 732px;
+
     
   }
     &__stats{
@@ -121,6 +122,10 @@
       &--form {
         width: 77.6%;
         margin: 0 auto;
+
+        @include desktop(){
+          width: 93%;
+        }
     
         &--label {
           font-size: 0.875rem;

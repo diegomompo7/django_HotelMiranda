@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.urls import include, path
 from .views.rooms import *
-from .views.booking import *
 from .views.contact import *
 from .views.home import *
 from .views.about import *
@@ -11,7 +10,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("home/", home, name="home"),
     path("about/", about, name="about"),
-    path("booking/", createBooking, name="bookings"),
+    path("booking/<int:idRoom>/", createBooking, name="booking"),
     path("rooms/", roomsList, name="rooms"),
     path("room/<int:idRoom>/", roomIdList, name="roomDetail"),
     path("rooms/available", roomsAvailableInRange, name="roomAvailableRange"),

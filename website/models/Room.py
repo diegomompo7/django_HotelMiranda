@@ -28,9 +28,9 @@ class Room(models.Model):
     roomNumber = models.CharField(max_length = 50)
     description = models.TextField(max_length = 255)
     offer = models.CharField(max_length = 3, choices = OfferRoom.choices)
-    priceNight = models.DecimalField(max_digits=10, decimal_places=2, validators = [
-        MinValueValidator(50.00),
-        MaxValueValidator(200.00)
+    priceNight = models.IntegerField(validators = [
+        MinValueValidator(50),
+        MaxValueValidator(200)
     ])
     discount = models.PositiveIntegerField(validators = [
         MinValueValidator(0),

@@ -6,7 +6,6 @@ from ..models.Room import *
 def home(request):
     
     form = CheckAvailabilityForm(request.POST)
-    idRooms = []
     
     handRooms = Room.objects.prefetch_related("amenities").filter(status = 'Available').order_by('?')[:3]
 

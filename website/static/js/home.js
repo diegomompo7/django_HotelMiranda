@@ -16,3 +16,16 @@ video.addEventListener("timeupdate", function() {
         video.pause();
     }
 });
+function mostrarNotificacion(mensaje, tipo) {
+    // Realizar una solicitud AJAX para mostrar la notificación
+    console.log(mensaje, tipo)
+        Toastify({
+            text: data.mensaje,
+            duration: 3000,  // Duración de la notificación en milisegundos
+            close: true,
+            gravity: "top", // Posición de la notificación
+            position: "center", // Alineación de la notificación
+            backgroundColor: data.tipo === 'error' ? '#ff0000' : '#007bff' // Color de fondo basado en el tipo de notificación
+        }).showToast();
+};
+

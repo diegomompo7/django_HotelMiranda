@@ -54,3 +54,7 @@ document.body.addEventListener("mousemove", (event) => {
     }
 })
 
+const message = document.getElementById("alert");
+    if (message) {
+        alert(message.innerText);
+}
