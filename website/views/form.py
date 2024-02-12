@@ -25,25 +25,59 @@ def checkAvailability(request):
     )
 
 def createBooking(request, idRoom):
-    print(request)
+    room = Room.objects.prefetch_related("amenities").filter(id = idRoom)
+    
+    form = FormBooking(request.POST)
+ 
+    relatedRooms = Room.objects.prefetch_related("amenities").filter(roomType = room[0].roomType, status = "Available").order_by('?')
+    
     if request.method == 'POST':
         form = FormBooking(request.POST)
         if form.is_valid():
             
-            room = Room.objects.filter(id = idRoom)
+            checkInDate = request.POST.get("check_in")
+            checkOutDate = request.POST.get("check_out")
             
-            Booking.objects.create(
-                name = request.POST.get("name"),
-                email = request.POST.get("email"),
-                phone = request.POST.get("phone"),
-                orderDate = date.today(),
-                check_in = request.POST.get("check_in"),
-                hour_in = "18:00",
-                check_out = request.POST.get("check_out"),
-                hour_out = "12:00",
-                room = room[0],
-                specialRequest = request.POST.get("specialRequest"),
-                status = 'Check In')
-            return HttpResponse('¡Form save succesuflly!')
+            print(checkInDate, checkOutDate)
+            
+            checkRoom = Booking.objects.filter(room_id = idRoom, check_in__lt=checkOutDate, check_out__gt=checkInDate).values_list('room_id', flat=True)
+            
+            
+            if len(checkRoom) == 0:
+                Booking.objects.create(
+                    name = request.POST.get("name"),
+                    email = request.POST.get("email"),
+                    phone = request.POST.get("phone"),
+                    orderDate = date.today(),
+                    check_in = checkInDate,
+                    hour_in = "18:00",
+                    check_out = checkOutDate,
+                    hour_out = "12:00",
+                    room = room[0],
+                    specialRequest = request.POST.get("specialRequest"),
+                    status = 'Check In')
+            
+                message = (f"¡Thank you for your request! \n We have received it correctly. Someone from our Team will get back to you very soon. \n The Miranda Hotel")
+            
+                return HttpResponseRedirect(f'/room/{idRoom}?message={message}')
+            else:
+                message = (f"¡We are sorry!\nThis room is not available for the dates you need. Please try different dates or try a different room.\n The Miranda Hotel")
+                
+                return render(
+                    request,
+                    "../templates/website/roomDetail.html",
+                {"form": form, "message": message,"room" : room, "relatedRooms": relatedRooms})
+                
+        else:
+            errors = form.errors.get_json_data()
+            
+            for error in errors:
+                message = errors[error][0]['message']
+                
+            return render(
+            request,
+            "../templates/website/roomDetail.html",
+            {"form": form, "message": message,"room" : room, "relatedRooms": relatedRooms}  
+            )
     else:
         form = FormBooking()

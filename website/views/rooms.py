@@ -30,7 +30,10 @@ def roomsList(request):
     
     
 def roomIdList(request, idRoom):
-    room = Room.objects.prefetch_related("amenities").filter(id = idRoom)
+    room = Room.objects.prefetch_related("amenities").filter(id = idRoom) 
+    message = request.GET.get('message', None)
+    
+    print(message)
     
     form = FormBooking(request.POST)
  
@@ -39,7 +42,7 @@ def roomIdList(request, idRoom):
     return render(
         request,
         "../templates/website/roomDetail.html",
-    {"room" : room, "relatedRooms": relatedRooms, "form" : form}
+    {"room" : room, "relatedRooms": relatedRooms, "form" : form, "message" : message}
     )   
     
     
