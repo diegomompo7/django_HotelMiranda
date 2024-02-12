@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from ..models.Booking import Booking
 from ..models.Room import Room
+from ..models.Contact import Contact
 
 from ..Form import *
 
@@ -32,7 +33,6 @@ def createBooking(request, idRoom):
     relatedRooms = Room.objects.prefetch_related("amenities").filter(roomType = room[0].roomType, status = "Available").order_by('?')
     
     if request.method == 'POST':
-        form = FormBooking(request.POST)
         if form.is_valid():
             
             checkInDate = request.POST.get("check_in")
@@ -81,3 +81,45 @@ def createBooking(request, idRoom):
             )
     else:
         form = FormBooking()
+        
+def createContact(request):
+    
+    print("hola")
+    form = FormContact(request.POST)
+    
+    print(form)
+    
+    if request.method == 'POST':
+        if form.is_valid():
+            
+                newContact = form.save()
+            
+                Contact.objects.create(
+                    fullName = request.POST.get("fullName"),
+                    email = request.POST.get("email"),
+                    phone = request.POST.get("phone"),
+                    date = date.today(),
+                    subject = request.POST.get("subject"),
+                    message = request.POST.get("message"),
+                )
+            
+                message = (f"¡Thank you for your message \n We have received it correctly.\n The Miranda Hotel")
+            
+                return HttpResponseRedirect(f'/contacts?message={message}')
+  
+        else:
+            errors = form.errors.get_json_data()
+            
+            for error in errors:
+                message = errors[error][0]['message']
+                
+            return render(
+            request,
+            "../templates/website/contact.html",
+            {"form": form, "message": message}  
+            )
+    return render(
+        request,
+        "../templates/website/contact.html",
+        {"form": form}
+    )

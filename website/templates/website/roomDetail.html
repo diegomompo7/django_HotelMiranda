@@ -45,7 +45,7 @@
 
       <div class="statsReserve__reserve">
         <h1 class="statsReserve__reserve--title">Check Availabity</h1>
-        <form action="{% url 'booking' data.id %}" class="statsReserve__reserve--form" method="POST">
+        <form action="{% url 'createBook' data.id %}" class="statsReserve__reserve--form" method="POST">
           {% csrf_token %} 
           <label class="statsReserve__reserve--form--label"
             >{{form.check_in.label}}

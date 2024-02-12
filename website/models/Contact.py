@@ -1,12 +1,11 @@
 from django.db import models
 from django.core.validators import RegexValidator, MinValueValidator, MaxValueValidator
+from datetime import date
 
     
 class Contact(models.Model):
     id = models.AutoField(primary_key=True)    
-    userImg = models.URLField(("userImg"), max_length=200)
-    name = models.CharField(max_length = 255)
-    surname = models.CharField(max_length = 255)
+    fullName = models.CharField(max_length = 255)
     email = models.EmailField(("Email"), max_length=255)
     phone = models.CharField(max_length = 9, validators=[
         RegexValidator(
@@ -15,13 +14,11 @@ class Contact(models.Model):
                 code="invalid_registration",
         )
     ])
-    date = models.DateField()
+    date = models.DateField(default = date.today())
     subject = models.CharField(max_length = 100)
     message = models.TextField(max_length = 255)
-    stars = models.IntegerField(validators = [
-        MinValueValidator(1),
-        MaxValueValidator(5)
-    ])
     is_archived = models.BooleanField(default = False)
 
 
+    class Meta:
+        ordering = ['fullName', 'email']
