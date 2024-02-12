@@ -2662,9 +2662,6 @@
   background: #BEAD8E;
   color: #ffffff;
 }
-.form__tabContent > div:last-child {
-  display: none;
-}
 .form__tabContent h1 {
   text-align: center;
   color: #222222;
@@ -2685,18 +2682,18 @@
   margin: 2px;
   color: #BEAD8E;
 }
-.form label.active {
+.form__tabContent label.active {
   transform: translateY(50px);
   left: 2px;
   font-size: 14px;
 }
-.form label.active .req {
+.form__tabContent label.active .req {
   opacity: 0;
 }
-.form label.highlight {
+.form__tabContent label.highlight {
   color: #222222;
 }
-.form input, .form textarea {
+.form__tabContent input, .form__tabContent textarea {
   font-size: 0.875rem;
   font-family: "Archivo";
   padding: 0 2.143em;
@@ -2709,15 +2706,15 @@
   border-radius: 0;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
-.form input:focus, .form textarea:focus {
+.form__tabContent input:focus, .form__tabContent textarea:focus {
   outline: 0;
   border-color: #BEAD8E;
 }
-.form textarea {
+.form__tabContent textarea {
   border: 2px solid #999999;
   resize: vertical;
 }
-.form button {
+.form__tabContent button {
   border: 0;
   outline: none;
   border-radius: 0;
@@ -2730,39 +2727,35 @@
   color: #ffffff;
   -webkit-appearance: none;
 }
-.form button:hover, .form button:focus {
+.form__tabContent button:hover, .form__tabContent button:focus {
   background: #b5a17e;
 }
-.form button-block {
+.form__tabContent button-block {
   display: block;
   width: 100%;
 }
-
-.field-wrap {
+.form .field-wrap {
   position: relative;
   margin-bottom: 40px;
 }
-
-.top-row:after {
+.form .top-row:after {
   content: "";
   display: table;
   clear: both;
 }
-.top-row > div {
+.form .top-row > div {
   float: left;
   width: 48%;
   margin-right: 4%;
 }
-.top-row > div:last-child {
+.form .top-row > div:last-child {
   margin: 0;
 }
-
-.button-block {
+.form .button-block {
   display: block;
   width: 100%;
 }
-
-.forgot {
+.form .forgot {
   margin-top: -20px;
   text-align: right;
 }

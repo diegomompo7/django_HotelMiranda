@@ -6,6 +6,7 @@ from ..models.Room import *
 def home(request):
     
     form = CheckAvailabilityForm(request.POST)
+    message = request.GET.get('message', None)
     
     handRooms = Room.objects.prefetch_related("amenities").filter(status = 'Available').order_by('?')[:3]
 
@@ -13,6 +14,6 @@ def home(request):
     return render(
         request,
         "../templates/website/index.html",
-        {"form": form, "handRooms":handRooms}
+        {"form": form, "handRooms":handRooms, "message": message}
     )
     

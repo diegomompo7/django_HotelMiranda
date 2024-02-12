@@ -4,12 +4,14 @@ from django.contrib import messages
 from ..models.Booking import Booking
 from ..models.Room import Room
 from ..models.Contact import Contact
-
 from ..Form import *
+from django.contrib.auth import authenticate, login
 
 def checkAvailability(request):
     print(request)
     form = CheckAvailabilityForm(request.POST)
+    
+    print(form)
 
     if form.is_valid():
         check_in = form.cleaned_data["check_in"]
@@ -84,7 +86,6 @@ def createBooking(request, idRoom):
         
 def createContact(request):
     
-    print("hola")
     form = FormContact(request.POST)
     
     print(form)
@@ -122,4 +123,40 @@ def createContact(request):
         request,
         "../templates/website/contact.html",
         {"form": form}
+    )
+    
+def postLogin(request):
+    
+    loginUser = FormLogin(request.POST)
+    print(request)
+    
+    if request.method == 'POST':
+        if loginUser.is_valid():
+            
+                emailLogin = request.POST.get("email")
+                passwordLogin = request.POST.get("password")
+                
+                checkLogin = authenticate(request, email=emailLogin, password=passwordLogin)
+                print(checkLogin)
+                
+                if checkLogin is not None:
+                    
+                    login(request, emailLogin, passwordLogin)
+                    return HttpResponseRedirect(f'/home?message={message}')
+  
+                message = (f"Invalid email or password\n The Miranda Hotel")
+                return HttpResponseRedirect(f'/login?message={message}')
+
+        else:
+            errors = loginUser.errors.get_json_data()
+            
+            for error in errors:
+               print(errors[error][0]['message'])
+            message = (f"Invalid email or password\n The Miranda Hotel")
+            return HttpResponseRedirect(f'/login?message={message}')
+            
+    return render(
+        request,
+        "../templates/website/login.html",
+        {"login": loginUser}
     )

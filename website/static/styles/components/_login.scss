@@ -73,9 +73,7 @@ $br: 4px;
     }
   }
   &__tabContent {
-    & > div:last-child {
-      display:none;
-    }
+
     & h1{
       text-align:center;
       color:$fourth-color;
@@ -96,7 +94,6 @@ $br: 4px;
         color:$main;
       }
     }
-  }
   
   & label.active {
     transform:translateY(50px);
@@ -188,4 +185,5 @@ $br: 4px;
 .forgot {
   margin-top:-20px;
   text-align:right;
+}
 }

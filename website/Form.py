@@ -4,6 +4,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from website.models.Booking import Booking
+from  .models.User import *
 from .models.Contact import Contact
 from datetime import date
 
@@ -61,3 +62,26 @@ class FormContact(forms.ModelForm):
             "subject": forms.TextInput(attrs={'type': 'text', 'max_length' : 100, "placeholder" : "Enter a subject"}),
             "message": forms.Textarea(attrs={'rows' : 8, 'type': 'text', "placeholder" : "Enter a message"})
         }
+
+class FormLogin(forms.Form):
+    email = forms.EmailField(label="Email Address:", widget=forms.TextInput(attrs={'type': 'email'}), max_length=255)
+    password = forms.CharField(label="Password", max_length = 20, widget=forms.PasswordInput(attrs={'type': 'password'}), validators=[
+    RegexValidator(
+                regex=r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{8,20}',
+                message="Enter a valid format password",
+                code="invalid_registration",
+        )
+    ])
+
+class FormSignup(forms.Form):
+    username = forms.CharField(label="Username", widget=forms.TextInput(attrs={'type': 'text'}), max_length=20)
+    first_name = forms.CharField(label="First Name", widget = forms.TextInput(attrs={'type': 'text'}), max_length=50)
+    last_name = forms.CharField(label="Last Name", widget = forms.TextInput(attrs={'type': 'text'}), max_length=50)
+    email = forms.EmailField(label="Email Address", widget=forms.TextInput(attrs={'type': 'email'}), max_length=255)
+    password = forms.CharField(label="Password", max_length = 20, widget=forms.PasswordInput(attrs={'type': 'password'}), validators=[
+    RegexValidator(
+                regex=r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{8,20}',
+                message="Enter a valid format password",
+                code="invalid_registration",
+        )
+    ])

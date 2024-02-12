@@ -3,13 +3,15 @@ from django.urls import include, path
 from .views.rooms import *
 from .views.contact import *
 from .views.home import *
-from .views.login import *
+from .views.auth import *
 from .views.about import *
 from .views.form import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("login/", login, name="login"),
+    path("login/", getLogin, name="login"),
+    path("signup/", getSignup, name="signup"),
+    path("loginIn/", postLogin, name="postLogin"),
     path("home/", home, name="home"),
     path("about/", about, name="about"),
     path("createBooking/<int:idRoom>/", createBooking, name="createBook"),
