@@ -38,7 +38,7 @@ class FormBooking(forms.Form):
                 code="invalid_registration",
         ),
     ])
-    specialRequest = forms.CharField(label="Message", widget=forms.Textarea(attrs={'type': 'text', "rows" : 8}), max_length = 255, null=True)
+    specialRequest = forms.CharField(label="Message", max_length = 255, widget=forms.Textarea(attrs={'type': 'text', "rows" : 8, "null":True}))
 
     def clean(self):
         cleaned_data = super().clean()
@@ -55,9 +55,9 @@ class FormContact(forms.ModelForm):
         model = Contact
         fields = ["fullName", "phone", "email", "subject", "message"]
         widgets = {
-            "fullName": forms.TextInput(max_length = 255, attrs={'max_length' : 255, "placeholder" : "Enter your full name"}),
-            "phone": forms.TextInput(max_length = 9, attrs={'type': 'text', 'max_length' : 9, "placeholder" : "Enter your phone"}),
-            "email": forms.TextInput(max_length = 255, attrs={'type': 'text', 'max_length' : 255, "placeholder" : "Enter your email"}),
-            "subject": forms.TextInput(max_length = 100, attrs={'type': 'text', 'max_length' : 100, "placeholder" : "Enter a subject"}),
+            "fullName": forms.TextInput(attrs={'max_length' : 255, "placeholder" : "Enter your full name"}),
+            "phone": forms.TextInput(attrs={'type': 'text', 'max_length' : 9, "placeholder" : "Enter your phone"}),
+            "email": forms.TextInput(attrs={'type': 'text', 'max_length' : 255, "placeholder" : "Enter your email"}),
+            "subject": forms.TextInput(attrs={'type': 'text', 'max_length' : 100, "placeholder" : "Enter a subject"}),
             "message": forms.Textarea(attrs={'rows' : 8, 'type': 'text', "placeholder" : "Enter a message"})
         }
