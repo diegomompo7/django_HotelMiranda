@@ -6,6 +6,10 @@ from ..models.Room import Room
 from ..models.Contact import Contact
 from ..Form import *
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User  
+from django.urls import reverse
+from datetime import datetime
+from django.contrib.auth.forms import UserCreationForm  
 
 def checkAvailability(request):
     print(request)
@@ -88,8 +92,6 @@ def createContact(request):
     
     form = FormContact(request.POST)
     
-    print(form)
-    
     if request.method == 'POST':
         if form.is_valid():
             
@@ -128,35 +130,89 @@ def createContact(request):
 def postLogin(request):
     
     loginUser = FormLogin(request.POST)
-    print(request)
-    
     if request.method == 'POST':
         if loginUser.is_valid():
             
-                emailLogin = request.POST.get("email")
+                usernameLogin = request.POST.get("username")
                 passwordLogin = request.POST.get("password")
-                
-                checkLogin = authenticate(request, email=emailLogin, password=passwordLogin)
-                print(checkLogin)
+                checkLogin = authenticate(request, username=usernameLogin, password=passwordLogin)
+                print("1", checkLogin)
                 
                 if checkLogin is not None:
                     
-                    login(request, emailLogin, passwordLogin)
-                    return HttpResponseRedirect(f'/home?message={message}')
-  
-                message = (f"Invalid email or password\n The Miranda Hotel")
+                    login(request, checkLogin)
+                    return HttpResponseRedirect(f'/profile/')
+                
+                
+                if User.objects.filter(username=usernameLogin).exists():
+                    message = (f"account not exists on database\nThe Miranda Hotel")
+                    return HttpResponseRedirect(f'/login?message={message}')
+                    
+                message = (f"Invalid email or password\n or account not exists\nThe Miranda Hotel")
                 return HttpResponseRedirect(f'/login?message={message}')
 
         else:
-            errors = loginUser.errors.get_json_data()
-            
-            for error in errors:
-               print(errors[error][0]['message'])
-            message = (f"Invalid email or password\n The Miranda Hotel")
-            return HttpResponseRedirect(f'/login?message={message}')
+            return HttpResponseRedirect(f'/login')
             
     return render(
         request,
         "../templates/website/login.html",
         {"login": loginUser}
+    )
+
+def createUser(request):
+    
+    signup = FormSignup(request.POST)
+    active_tab = 'signup'
+    
+    print(signup)
+    
+    if request.method == 'POST':
+        if signup.is_valid():
+            username= request.POST.get("username")
+            email = request.POST.get("email")
+            firstName = request.POST.get("first_name")
+            lastName = request.POST.get("last_name")
+            password1 = request.POST.get("password1")
+            password2 = request.POST.get("password2")
+            
+            if User.objects.filter(username=username).exists():
+                message = (f"The username exists on database\nThe Miranda Hotel")
+                return render(request, "../templates/website/login.html", {"signup": signup, "active_tab": active_tab, "message": message})
+            
+            if User.objects.filter(email=email).exists():
+                message = (f"The emails exists on database\nThe Miranda Hotel")
+                return render(
+                    request,
+                    "../templates/website/login.html",
+                    {"singup": signup,"active_tab" : active_tab, "message" : message}
+                )
+                
+            if password1 != password2:
+                message = (f"The password don't match\nThe Miranda Hotel")
+                return render(
+                    request,
+                    "../templates/website/login.html",
+                    {"singup": signup,"active_tab" : active_tab, "message" : message}
+                )
+            
+            User.objects.create_user(
+                password = password1,
+                username = username,
+                first_name = firstName,
+                last_name = lastName,
+                email = email,
+            )
+            
+            return HttpResponseRedirect(f'/login')
+      
+        errors = signup.errors.get_json_data()
+        for error in errors:
+            message = errors[error][0]['message']
+        return render(request,"../templates/website/login.html",{"signup": signup, "active_tab" : active_tab,  "message": message})
+            
+    return render(
+        request,
+        "../templates/website/login.html",
+        {"signup": signup}
     )

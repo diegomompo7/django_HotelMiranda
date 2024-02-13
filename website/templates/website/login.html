@@ -23,7 +23,7 @@ defer
       {% if signup %}
       <div id="signup" class="form__tabContent--form">  
         <h1>Sign Up for Free</h1>
-        <form action="/" method="post">
+        <form action="{% url 'createUser' %}" method="post">
           {% csrf_token %} 
           <div class="top-row">
             <div class="field-wrap">
@@ -56,12 +56,18 @@ defer
           </div>
           <div class="field-wrap">
               <label>
-                {{signup.password.label}}<span class="req">*</span>
+                {{signup.password1.label}}<span class="req">*</span>
               </label>
-              {{signup.password}}
+              {{signup.password1}}
+            </div>
+            <div class="field-wrap">
+              <label>
+                {{signup.password2.label}}<span class="req">*</span>
+              </label>
+              {{signup.password2}}
             </div>
 
-          <button type="submit" class="button button-block">Get Started</button>
+          <button type="submit" class="button button-block">Sign Up</button>
         </form>
       </div>
       {% endif %}
@@ -73,12 +79,12 @@ defer
           <h1>Welcome Back!</h1>
           
           <form action="{% url 'postLogin' %}" method="post">
-      
+            {% csrf_token %}
             <div class="field-wrap">
             <label>
-              {{login.email.label}}<span class="req">*</span>
+              {{login.username.label}}<span class="req">*</span>
             </label>
-            {{login.email}}
+            {{login.username}}
             </div>
           
             <div class="field-wrap">

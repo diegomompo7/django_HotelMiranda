@@ -1,0 +1,97 @@
+$body-bg: #c1bdba;
+$form-bg: #13232f;
+$white: #ffffff;
+
+$main: $third-color;
+$main-light: lighten($main, 5%);
+$main-dark: darken($main, 5%);
+
+$gray-light: #a0b3b0;
+$gray: #ddd;
+
+$thin: 300;
+$normal: 400;
+$bold: 600;
+$br: 4px;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.profile {
+
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: $br;
+  box-shadow: 0 4px 10px 4px rgba($form-bg, .3);
+
+  @include desktop() {
+    margin-top: 100px;
+  }
+  &__tabContent {
+
+    text-align: center;
+
+    & h1 {
+      color: $fourth-color;
+      font-weight: $thin;
+      margin: 0 0 40px;
+    }
+
+    &--title{
+      color: $third-color;
+      font-size: 20px;
+      font-weight: bold;
+
+    }
+    &--description{
+      margin-bottom: 20px;
+    }
+
+
+  & a {
+    text-decoration: none;
+    color: $fifth-color;
+    transition: .5s ease;
+    font-weight: bold;
+
+    &:hover {
+      color: darken($fifth-color, 5%);
+    }
+  }
+
+    & button {
+      border: 0;
+      outline: none;
+      border-radius: 0;
+      padding: 15px 0;
+      font-size: 2rem;
+      font-weight: $bold;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      background: $main;
+      color: $white;
+      -webkit-appearance: none;
+      margin-top: 20px;
+
+      &:hover,
+      &:focus {
+        background: $main-dark;
+      }
+
+      &-block {
+        display: block;
+        width: 100%;
+      }
+    }
+
+  }
+
+  .button-block {
+    display: block;
+    width: 100%;
+  }
+}

@@ -42,7 +42,7 @@ class Booking(models.Model):
     status = models.CharField(max_length = 50, choices = StatusBooking.choices,  default="Check In")
     
     class Meta:
-        ordering = ['room_id', 'specialRequest']
+       db_table = 'website_booking'
     
     def clean(self):
         checkOutHigherCheckIn(self.check_out, self)

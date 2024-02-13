@@ -6,11 +6,15 @@ from .views.home import *
 from .views.auth import *
 from .views.about import *
 from .views.form import *
+from .views.profile import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("login/", getLogin, name="login"),
+    path("profile/", profile, name="profile"),
+    path("logout/", getLogOut, name="logout"),
     path("signup/", getSignup, name="signup"),
+    path("createUser/", createUser, name="createUser"),
     path("loginIn/", postLogin, name="postLogin"),
     path("home/", home, name="home"),
     path("about/", about, name="about"),

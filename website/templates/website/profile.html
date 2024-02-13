@@ -1,0 +1,26 @@
+{% extends 'website/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="profile">
+    <div class="profile__tabContent">
+      <h1>Profile</h1>
+      <p class="profile__tabContent--title">Full Name</p>
+      <p class="profile__tabContent--description">{{user.first_name}} {{user.last_name}}</p>
+      <p class="profile__tabContent--title">Username</p>
+      <p class="profile__tabContent--description">{{user.username}}</p>
+      <p class="profile__tabContent--title">Email</p>
+      <p class="profile__tabContent--description">{{user.email}}</p>
+      <p class="profile__tabContent--title">Join Date</p>
+      <p class="profile__tabContent--description">{{user.date_joined}}</p>
+      <a href="#">Change Password</a>
+      <a href="{% url 'logout' %}"><button class="button button-block">Log Out</button></a>
+    </div>
+      
+</div>
+
+{% endblock %}
