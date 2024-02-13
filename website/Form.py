@@ -72,3 +72,14 @@ class FormSignup(UserCreationForm):
     first_name = forms.CharField(label="First Name", widget = forms.TextInput(attrs={'type': 'text'}), max_length=50)
     last_name = forms.CharField(label="Last Name", widget = forms.TextInput(attrs={'type': 'text'}), max_length=50)
     email = forms.EmailField(label="Email Address", widget=forms.TextInput(attrs={'type': 'email'}), max_length=255)
+    
+class FormCreateOrder(forms.Form):
+    
+    typeOrder = [
+    ("Food","Food"),
+    ("Other","Other")
+    ]
+    
+    room_id = forms.IntegerField(label="Room ID")
+    type = forms.ChoiceField(choices=typeOrder, widget=forms.Select(attrs={"class": "selectOrder"}))
+    description = forms.CharField(label="Description", widget=forms.Textarea(attrs={"rows" : 5}))

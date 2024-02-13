@@ -1,0 +1,19 @@
+{% extends 'website/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="order">
+
+  {% if allOrders %}
+  
+  {%else%}
+
+  <p>There aren't offers</p>
+
+{%endif%}
+</section>
+{% endblock %}

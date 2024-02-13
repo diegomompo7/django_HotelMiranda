@@ -14,5 +14,5 @@ class Order(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     type = models.CharField(max_length = 10, choices = TypeOrder.choices)
     description = models.TextField(max_length = 255)
-    timestamps = models.DateTimeField(auto_now_add=True)
+    timestamps = models.DateTimeField(auto_now=True)
     

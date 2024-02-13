@@ -9,7 +9,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User  
 from django.urls import reverse
 from datetime import datetime
-from django.contrib.auth.forms import UserCreationForm  
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from ..models.Order import Order
 
 def checkAvailability(request):
     print(request)
@@ -216,3 +218,56 @@ def createUser(request):
         "../templates/website/login.html",
         {"signup": signup}
     )
+    
+@login_required
+def createOrder(request):
+    
+    formOrder = FormCreateOrder(request.POST)
+    
+    return render(
+        request,
+        "../templates/website/formOrder.html",
+        {"submit" : "Create a Order", "formOrder" : formOrder, "method" : "create"}
+    )
+    
+@login_required
+def postOrder(request):
+    
+    user = request.user
+    formOrder = FormCreateOrder(request.POST)
+    print(formOrder)
+    
+    if request.method == 'POST':
+        if formOrder.is_valid():
+            
+            roomId = request.POST.get("room_id")
+            typeOrder = request.POST.get("type")
+            description= request.POST.get("description")
+            checkRoomId = Room.objects.filter(roomNumber = roomId)
+            
+            if len(checkRoomId) == 0:
+                message = (f"Room not found\nThe Miranda Hotel")
+                print(message)
+                return render(
+                    request,
+                    "../templates/website/formOrder.html",
+                    {"formOrder": formOrder, "message" : message, "method" : "create","submit" : "Create a Order"}
+                )
+            
+            Order.objects.create(
+                type = typeOrder,
+                description = description,
+                timestamps = date.today(),
+                room_id = roomId,
+                user_id = user.id,
+            )    
+        errors = formOrder.errors.get_json_data()
+        print(errors)
+        
+            
+    return render(
+        request,
+        "../templates/website/formOrder.html",
+        {"formOrder": formOrder}
+    )
+    

@@ -1,0 +1,11 @@
+.order{
+    background-color: red;
+    text-align: center;
+    padding: 40px;
+    width: 80%;
+    margin:40px auto;
+
+    & p {
+        font-size: 1.5rem;
+    }
+}

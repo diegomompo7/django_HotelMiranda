@@ -7,6 +7,7 @@ from .views.auth import *
 from .views.about import *
 from .views.form import *
 from .views.profile import *
+from .views.order import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,4 +28,7 @@ urlpatterns = [
     path("popular/", mostPopularRooms, name="mostPopularRooms"),
     path("contacts/", contact, name="contacts"),
     path("checkAva/", checkAvailability, name="checkAva"),
+    path("order/", getOrder, name="order"),
+    path("createOrder/", createOrder, name="createOrder"),
+    path("postOrder/", postOrder, name="postOrder")
 ]

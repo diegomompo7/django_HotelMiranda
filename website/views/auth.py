@@ -5,6 +5,7 @@ from ..models.Room import *
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth import logout
 
+
 def getLogin(request):
     
         if request.user.is_authenticated:
@@ -13,13 +14,14 @@ def getLogin(request):
     
             message = request.GET.get('message', None)
             active_tab = 'login'
-            login = FormLogin(request.POST)            
+            login = FormLogin(request.POST)  
 
             return render(
                 request,
                 "../templates/website/login.html",
                 {"login": login, "message":message, 'active_tab': active_tab}
             )
+            
             
 def getSignup(request):           
         message = request.GET.get('message', None)

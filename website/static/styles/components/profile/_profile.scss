@@ -12,7 +12,6 @@ $gray: #ddd;
 $thin: 300;
 $normal: 400;
 $bold: 600;
-$br: 4px;
 
 *,
 *:before,
@@ -22,14 +21,13 @@ $br: 4px;
 
 .profile {
 
-  padding: 40px;
-  max-width: 600px;
-  margin: 40px auto;
-  border-radius: $br;
-  box-shadow: 0 4px 10px 4px rgba($form-bg, .3);
+  padding: 2.5rem;
+  max-width:37.5rem;
+  margin:2.5rem auto;
+  box-shadow:0 4px 10px 4px rgba($form-bg,.3);
 
   @include desktop() {
-    margin-top: 100px;
+    margin-top: 6.25rem;
   }
   &__tabContent {
 
@@ -38,17 +36,17 @@ $br: 4px;
     & h1 {
       color: $fourth-color;
       font-weight: $thin;
-      margin: 0 0 40px;
+      margin: 0 0 2.5rem;
     }
 
     &--title{
       color: $third-color;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
 
     }
     &--description{
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem;
     }
 
 
@@ -67,7 +65,7 @@ $br: 4px;
       border: 0;
       outline: none;
       border-radius: 0;
-      padding: 15px 0;
+      padding: 0.468em 0;
       font-size: 2rem;
       font-weight: $bold;
       text-transform: uppercase;
@@ -75,7 +73,7 @@ $br: 4px;
       background: $main;
       color: $white;
       -webkit-appearance: none;
-      margin-top: 20px;
+      margin-top: 0.625em;
 
       &:hover,
       &:focus {

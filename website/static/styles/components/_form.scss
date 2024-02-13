@@ -14,7 +14,7 @@ $gray: #ddd;
 $thin: 300;
 $normal: 400;
 $bold: 600;
-$br: 4px;
+$br: 0.25rem;
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -22,14 +22,14 @@ $br: 4px;
 
 .form {
 
-  padding: 40px;
-  max-width:600px;
-  margin:40px auto;
+  padding: 2.5rem;
+  max-width:37.5rem;
+  margin:2.5rem auto;
   border-radius:$br;
   box-shadow:0 4px 10px 4px rgba($form-bg,.3);
 
   @include desktop(){
-    margin-top: 100px;
+    margin-top: 6.25rem;
   }
 
   &a {
@@ -44,7 +44,7 @@ $br: 4px;
   &__tabGroup {
     list-style:none;
     padding:0;
-    margin:0 0 40px 0;
+    margin:0 0 2.5rem 0;
     &:after {
       content: "";
       display: table;
@@ -53,10 +53,10 @@ $br: 4px;
     li a {
       display:block;
       text-decoration:none;
-      padding:15px;
+      padding:0.75em;
       background:rgba($thirteenth-color,.25);
       color:$sixth-color;
-      font-size:20px;
+      font-size:1.25rem;
       float:left;
       width:50%;
       text-align:center;
@@ -78,27 +78,27 @@ $br: 4px;
       text-align:center;
       color:$fourth-color;
       font-weight:$thin;
-      margin:0 0 40px;
+      margin:0 0 2.5rem;
     }
     & label {
       position:absolute;
-      transform:translateY(6px);
-      left:13px;
+      transform:translateY(0.27em);
+      left:0.59em;
       color:rgba($second-color,.5);
       transition:all 0.25s ease;
       -webkit-backface-visibility: hidden;
       pointer-events: none;
-      font-size:22px;
+      font-size:1.375rem;
       .req {
-        margin:2px;
+        margin:0.09em;
         color:$main;
       }
     }
   
   & label.active {
-    transform:translateY(50px);
-    left:2px;
-    font-size:14px;
+    transform:translateY(3.57em);
+    left:0.142em;
+    font-size:0.875rem;
     .req {
       opacity:0;
     }
@@ -108,7 +108,7 @@ $br: 4px;
     color:$fourth-color;
   }
   
-  & input, textarea {
+  & input, textarea, select{
     font-size: 0.875rem;
     font-family: "Archivo";
     padding: 0 2.143em;
@@ -135,7 +135,7 @@ $br: 4px;
     border:0;
     outline:none;
     border-radius:0;
-    padding:15px 0;
+    padding:0.9375rem 0;
     font-size:2rem;
     font-weight:$bold;
     text-transform:uppercase;
@@ -156,7 +156,7 @@ $br: 4px;
 
 .field-wrap {
   position:relative;
-  margin-bottom:40px;
+  margin-bottom:2.5rem;
 }
 
 .top-row {
@@ -183,7 +183,7 @@ $br: 4px;
 }
 
 .forgot {
-  margin-top:-20px;
+  margin-top:-1.25rem;
   text-align:right;
 }
 }

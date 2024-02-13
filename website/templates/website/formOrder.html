@@ -1,0 +1,52 @@
+{% extends 'website/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+<script
+type="text/javascript"
+src="{% static 'js/login.js' %}"
+defer
+></script>
+
+<div class="form">
+    <ul class="form__tabGroup">
+      
+    <div class="form__tabContent">
+        <h1>Form Order</h1>
+        <form action="{% if method == 'create' %}{% url 'postOrder' %}{% endif %}" method="post">
+          {% csrf_token %}
+
+          <div class="top-row">
+            {% if method == 'create'%}
+            <div class="field-wrap">
+              <label>
+                {{formOrder.room_id.label}}<span class="req">*</span>
+              </label>
+              {{formOrder.room_id}}
+            </div>
+            {%endif%}
+        
+            <div class="field-wrap">
+              {{formOrder.type}}
+            </div>
+
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Description<span class="req">*</span>
+            </label>
+            {{formOrder.description}}
+          </div>
+          <button type="submit" class="button button-block">{{submit}}</button>
+        </form>
+      </div>
+    </div>
+      
+</div>
+
+{% endblock %}
