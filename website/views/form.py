@@ -244,7 +244,7 @@ def postOrder(request):
             roomId = request.POST.get("room_id")
             typeOrder = request.POST.get("type")
             description= request.POST.get("description")
-            checkRoomId = Room.objects.filter(roomNumber = roomId).values()
+            checkRoomId = Room.objects.filter(id = roomId).values()
             
             if len(checkRoomId) == 0:
                 message = (f"Room not found\nThe Miranda Hotel")
@@ -263,7 +263,7 @@ def postOrder(request):
                 user_id = user.id,
             )
             
-            return HttpResponseRedirect("/order/" )
+            return HttpResponseRedirect("/orders/" )
            
         errors = formOrder.errors.get_json_data()
         print(errors)
@@ -286,7 +286,7 @@ def updateOrder(request, idOrder):
         
         if formOrder.is_valid():
             formOrder.save()
-            return HttpResponseRedirect("/order/")
+            return HttpResponseRedirect("/orders/")
     
     else:
         formOrder = FormUpdateOrder(instance=order)

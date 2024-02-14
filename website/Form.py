@@ -7,6 +7,7 @@ from website.models.Booking import Booking
 from django.contrib.auth.models import User
 from .models.Contact import Contact
 from .models.Order import Order
+from .models.Room import Room
 from datetime import date
 from django.contrib.auth.forms import UserCreationForm  
 
@@ -76,12 +77,20 @@ class FormSignup(UserCreationForm):
     
 class FormCreateOrder(forms.Form):
     
+    rooms = Room.objects.all().values("id", "roomType", "roomNumber")
+    
+    
+    roomsSelect = []
+    
     typeOrder = [
     ("Food","Food"),
     ("Other","Other")
     ]
     
-    room_id = forms.IntegerField(label="Room ID")
+    for room in rooms:
+        roomsSelect.append((room["id"], f"{room['roomType']} - {room['roomNumber']}"))
+    
+    room_id = forms.ChoiceField(choices=roomsSelect, widget=forms.Select(attrs={"class": "selectOrder"}))
     type = forms.ChoiceField(choices=typeOrder, widget=forms.Select(attrs={"class": "selectOrder"}))
     description = forms.CharField(label="Description", widget=forms.Textarea(attrs={"rows" : 5}))
     
