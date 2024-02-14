@@ -12,6 +12,7 @@ from datetime import datetime
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from ..models.Order import Order
+from django.shortcuts import get_object_or_404
 
 def checkAvailability(request):
     print(request)
@@ -243,7 +244,7 @@ def postOrder(request):
             roomId = request.POST.get("room_id")
             typeOrder = request.POST.get("type")
             description= request.POST.get("description")
-            checkRoomId = Room.objects.filter(roomNumber = roomId)
+            checkRoomId = Room.objects.filter(roomNumber = roomId).values()
             
             if len(checkRoomId) == 0:
                 message = (f"Room not found\nThe Miranda Hotel")
@@ -258,9 +259,12 @@ def postOrder(request):
                 type = typeOrder,
                 description = description,
                 timestamps = date.today(),
-                room_id = roomId,
+                room_id = checkRoomId[0]["id"],
                 user_id = user.id,
-            )    
+            )
+            
+            return HttpResponseRedirect("/order/" )
+           
         errors = formOrder.errors.get_json_data()
         print(errors)
         
@@ -271,3 +275,25 @@ def postOrder(request):
         {"formOrder": formOrder}
     )
     
+@login_required
+def updateOrder(request, idOrder):
+    
+    order = get_object_or_404(Order, id=idOrder)
+
+    
+    if request.method == 'POST':
+        formOrder = FormUpdateOrder(request.POST, instance=order)
+        
+        if formOrder.is_valid():
+            formOrder.save()
+            return HttpResponseRedirect("/order/")
+    
+    else:
+        formOrder = FormUpdateOrder(instance=order)
+    
+        print(formOrder)
+    return render(
+        request,
+        "../templates/website/formOrder.html",
+        {"submit" : "Update a Order", "formOrder" : formOrder, "method" : "update", "id" : idOrder}
+    )

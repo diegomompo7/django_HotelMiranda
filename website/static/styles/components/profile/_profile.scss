@@ -55,6 +55,7 @@ $bold: 600;
     color: $fifth-color;
     transition: .5s ease;
     font-weight: bold;
+    padding-left: 1.25rem;
 
     &:hover {
       color: darken($fifth-color, 5%);

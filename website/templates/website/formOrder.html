@@ -17,24 +17,27 @@ defer
       
     <div class="form__tabContent">
         <h1>Form Order</h1>
-        <form action="{% if method == 'create' %}{% url 'postOrder' %}{% endif %}" method="post">
+        <form action="{% if method == 'create' %}{% url 'postOrder' %}{%else%}{% url 'updateOrder' id%}{% endif %}" method="post">
           {% csrf_token %}
 
+          {% if method == 'create'%}
           <div class="top-row">
-            {% if method == 'create'%}
             <div class="field-wrap">
               <label>
                 {{formOrder.room_id.label}}<span class="req">*</span>
               </label>
               {{formOrder.room_id}}
             </div>
-            {%endif%}
         
             <div class="field-wrap">
               {{formOrder.type}}
             </div>
-
           </div>
+          {%else%}
+          <div class="field-wrap">
+            {{formOrder.type}}
+          </div>
+          {%endif%}
 
           <div class="field-wrap">
             <label>

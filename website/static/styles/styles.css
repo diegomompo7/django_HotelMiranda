@@ -2645,6 +2645,7 @@
   color: #686868;
   transition: 0.5s ease;
   font-weight: bold;
+  padding-left: 1.25rem;
 }
 .profile__tabContent a:hover {
   color: #5b5b5b;
@@ -2676,14 +2677,80 @@
 }
 
 .order {
-  background-color: red;
+  margin-top: 3.75rem;
   text-align: center;
-  padding: 40px;
-  width: 80%;
-  margin: 40px auto;
+  margin-bottom: 7.5em;
 }
-.order p {
+.order__items {
+  width: 23.4375em;
+  margin: 0 auto;
+}
+@media screen and (min-width: 62.5rem) {
+  .order__items {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    max-width: 73.125em;
+  }
+}
+.order__items--card {
+  width: 89.3%;
+  margin: 0 auto;
+  padding-bottom: 1.625em;
+  padding-top: 1.625em;
+  box-shadow: 0 0px 10px 8px rgba(189, 172, 141, 0.5);
+  margin-bottom: 1.5rem;
+}
+@media screen and (min-width: 62.5rem) {
+  .order__items--card {
+    width: 23.125em;
+    margin-top: 1.5rem;
+  }
+}
+.order__items--card--text {
+  width: 89%;
+  margin: 0 auto;
+}
+.order__items--card--text--title {
   font-size: 1.5rem;
+  font-weight: 400;
+  font-family: "Old Standard TT";
+  padding-bottom: 0.667em;
+}
+.order__items--card--text--description {
+  font-size: 0.875rem;
+  font-family: "Roboto";
+  line-height: 1.714em;
+  color: #777777;
+}
+.order__items--card--text--edit {
+  font-size: 1rem;
+  color: #BDBDBD;
+  text-decoration: none;
+  font-weight: 700;
+}
+.order__items--card--text--edit:hover {
+  font-size: 1.25rem;
+}
+.order button {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 0.9375em 0.9375em;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  font-family: "Archivo";
+  background: #BEAD8E;
+  color: #ffffff;
+  margin-top: 0.714em;
+}
+.order button:hover, .order button:focus {
+  background: #b5a17e;
+}
+.order button-block {
+  display: block;
+  width: 100%;
 }
 
 *, *:before, *:after {

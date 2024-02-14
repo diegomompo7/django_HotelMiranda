@@ -6,6 +6,7 @@ from django.core.validators import RegexValidator
 from website.models.Booking import Booking
 from django.contrib.auth.models import User
 from .models.Contact import Contact
+from .models.Order import Order
 from datetime import date
 from django.contrib.auth.forms import UserCreationForm  
 
@@ -83,3 +84,16 @@ class FormCreateOrder(forms.Form):
     room_id = forms.IntegerField(label="Room ID")
     type = forms.ChoiceField(choices=typeOrder, widget=forms.Select(attrs={"class": "selectOrder"}))
     description = forms.CharField(label="Description", widget=forms.Textarea(attrs={"rows" : 5}))
+    
+class FormUpdateOrder(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ["type", "description"]
+        widgets = {
+            "type": forms.Select(attrs={"class": "selectOrder"}),
+            "description": forms.Textarea(attrs={"rows" : 5})
+        }
+        label = {
+            "description" : "Description"
+        }
+    

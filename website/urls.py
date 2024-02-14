@@ -28,7 +28,8 @@ urlpatterns = [
     path("popular/", mostPopularRooms, name="mostPopularRooms"),
     path("contacts/", contact, name="contacts"),
     path("checkAva/", checkAvailability, name="checkAva"),
-    path("order/", getOrder, name="order"),
+    path("orders/", getOrder, name="orders"),
     path("createOrder/", createOrder, name="createOrder"),
+    path("updateOrder/<int:idOrder>/", updateOrder, name="updateOrder"),
     path("postOrder/", postOrder, name="postOrder")
 ]
