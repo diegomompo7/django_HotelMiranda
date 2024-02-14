@@ -1,4 +1,46 @@
+-- MySQL dump 10.13  Distrib 8.0.35, for Linux (x86_64)
+--
+-- Host: localhost    Database: HotelMiranda
+-- ------------------------------------------------------
+-- Server version	8.0.35-0ubuntu0.22.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `amenities`
+--
+
+DROP TABLE IF EXISTS `amenities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `amenities` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `amenity` varchar(255) NOT NULL,
+  `room_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `room_id` (`room_id`),
+  CONSTRAINT `amenities_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `amenities`
+--
+
+LOCK TABLES `amenities` WRITE;
+/*!40000 ALTER TABLE `amenities` DISABLE KEYS */;
 INSERT INTO `amenities` VALUES (110,'[\"urbanus\", \"tui\", \"fugit\", \"carcer\", \"curiositas\"]',5),(111,'[\"strenuus\", \"uredo\", \"votum\", \"bene\", \"antea\"]',6),(112,'[\"usque\", \"acerbitas\", \"deprimo\", \"aeternus\", \"laudantium\"]',7),(113,'[\"cetera\", \"accedo\", \"comedo\", \"architecto\", \"fugit\"]',8),(114,'[\"maiores\", \"creator\", \"vestrum\", \"vilis\", \"censura\"]',9),(115,'[\"adeo\", \"charisma\", \"careo\", \"peior\", \"doloribus\"]',10),(116,'[\"claudeo\", \"thesis\", \"sub\", \"ait\", \"comis\"]',11),(117,'[\"doloribus\", \"tergo\", \"hic\", \"textor\", \"sperno\"]',12),(118,'[\"tam\", \"spoliatio\", \"omnis\", \"suadeo\", \"vobis\"]',13),(119,'[\"illum\", \"addo\", \"ascisco\", \"alo\", \"denuncio\"]',14),(120,'[\"cohors\", \"venia\", \"ciminatio\", \"viduo\", \"suppellex\"]',15),(121,'[\"ambulo\", \"terminatio\", \"corrumpo\", \"civis\", \"corpus\"]',16),(122,'[\"aiunt\", \"utpote\", \"aranea\", \"adflicto\", \"repellat\"]',17),(123,'[\"velociter\", \"succurro\", \"tonsor\", \"defendo\", \"quam\"]',18),(124,'[\"acsi\", \"somniculosus\", \"maiores\", \"virga\", \"texo\"]',19),(125,'[\"Wifi\", \"TV\"]',52),(126,'[\"Wifi\", \"TV\"]',53),(127,'[\"Wifi\", \"TV\"]',54);
+/*!40000 ALTER TABLE `amenities` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `auth_group`
@@ -110,7 +152,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$260000$EC04QPxs9fCU9UsCcyaJpP$7PvmY+Ytw4Xo1/Y0iAXGJu3fse172GBvjabt9XSvbsA=','2024-02-13 11:20:30.715460',1,'diego','','','diego@diegomompo.com',1,1,'2024-02-05 10:47:57.887861'),(2,'pbkdf2_sha256$260000$315mzagj3JqUSeAwEaWEAg$my0sXZJ12mVnwUIQCYgzKExiaWqQAQqG5al4NeDHCK0=','2024-02-13 11:18:57.785860',0,'iago_miranda','Iago','Miranda','iago.miranda@gmail.com',0,1,'2024-02-13 10:45:20.457661'),(4,'pbkdf2_sha256$260000$DJF1bOY317Ugxc2ImvlaSl$DRQKrEHXrZOfLRjPuUfQwXXN6Xd++VdjrVIpa+7PW+o=','2024-02-13 12:43:53.082651',0,'angel_solanad','Angel','Solana','angel.solana@gmadl.com',0,1,'2024-02-13 11:59:16.986719');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$260000$EC04QPxs9fCU9UsCcyaJpP$7PvmY+Ytw4Xo1/Y0iAXGJu3fse172GBvjabt9XSvbsA=','2024-02-13 13:32:05.988003',1,'diego','','','diego@diegomompo.com',1,1,'2024-02-05 10:47:57.887861'),(2,'pbkdf2_sha256$260000$315mzagj3JqUSeAwEaWEAg$my0sXZJ12mVnwUIQCYgzKExiaWqQAQqG5al4NeDHCK0=','2024-02-13 11:18:57.785860',0,'iago_miranda','Iago','Miranda','iago.miranda@gmail.com',0,1,'2024-02-13 10:45:20.457661'),(4,'pbkdf2_sha256$260000$DJF1bOY317Ugxc2ImvlaSl$DRQKrEHXrZOfLRjPuUfQwXXN6Xd++VdjrVIpa+7PW+o=','2024-02-13 15:53:41.567845',0,'angel_solanad','Angel','Solana','angel.solana@gmadl.com',0,1,'2024-02-13 11:59:16.986719');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,7 +352,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -319,7 +361,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2024-02-05 10:46:55.270423'),(2,'auth','0001_initial','2024-02-05 10:46:55.717195'),(3,'admin','0001_initial','2024-02-05 10:46:55.831906'),(4,'admin','0002_logentry_remove_auto_add','2024-02-05 10:46:55.845353'),(5,'admin','0003_logentry_add_action_flag_choices','2024-02-05 10:46:55.852965'),(6,'contenttypes','0002_remove_content_type_name','2024-02-05 10:46:55.914369'),(7,'auth','0002_alter_permission_name_max_length','2024-02-05 10:46:55.954038'),(8,'auth','0003_alter_user_email_max_length','2024-02-05 10:46:55.971210'),(9,'auth','0004_alter_user_username_opts','2024-02-05 10:46:55.977999'),(10,'auth','0005_alter_user_last_login_null','2024-02-05 10:46:56.012231'),(11,'auth','0006_require_contenttypes_0002','2024-02-05 10:46:56.016736'),(12,'auth','0007_alter_validators_add_error_messages','2024-02-05 10:46:56.023424'),(13,'auth','0008_alter_user_username_max_length','2024-02-05 10:46:56.064867'),(14,'auth','0009_alter_user_last_name_max_length','2024-02-05 10:46:56.107058'),(15,'auth','0010_alter_group_name_max_length','2024-02-05 10:46:56.124049'),(16,'auth','0011_update_proxy_permissions','2024-02-05 10:46:56.131533'),(17,'auth','0012_alter_user_first_name_max_length','2024-02-05 10:46:56.172951'),(18,'sessions','0001_initial','2024-02-05 10:46:56.210378'),(19,'polls','0001_initial','2024-02-05 11:02:07.564545'),(20,'polls','0002_auto_20240205_1234','2024-02-05 12:35:17.442512'),(21,'polls','0003_auto_20240205_1304','2024-02-05 13:05:07.673557'),(22,'polls','0004_room','2024-02-05 14:23:53.104144'),(23,'polls','0005_booking','2024-02-05 15:39:12.791038'),(24,'polls','0006_auto_20240205_1603','2024-02-05 16:14:59.421306'),(25,'polls','0007_rename_room_booking_room_id','2024-02-05 16:14:59.444631'),(26,'polls','0008_rename_room_id_booking_room','2024-02-05 16:14:59.465271'),(27,'polls','0009_rename_room_booking_room_id','2024-02-05 16:14:59.488194'),(28,'polls','0010_rename_room_id_booking_room','2024-02-05 16:14:59.508735'),(29,'polls','0011_remove_booking_room','2024-02-05 16:14:59.531244'),(30,'polls','0012_booking_room','2024-02-05 16:14:59.577425'),(31,'polls','0013_alter_booking_options','2024-02-05 16:20:06.103143'),(32,'polls','0014_alter_booking_options','2024-02-05 16:24:44.218615'),(33,'polls','0015_alter_booking_specialrequest','2024-02-05 16:26:16.926468'),(34,'polls','0016_alter_booking_specialrequest','2024-02-05 16:29:01.244893'),(35,'polls','0017_alter_room_pricenight','2024-02-05 16:37:24.442595'),(36,'polls','0018_alter_booking_check_out','2024-02-06 09:37:06.034840'),(37,'polls','0019_auto_20240207_1338','2024-02-07 13:38:58.621175'),(38,'polls','0020_alter_amenity_amenity','2024-02-07 17:35:33.942234'),(39,'website','0001_initial','2024-02-09 10:10:59.236086'),(40,'website','0002_alter_booking_status','2024-02-09 10:20:51.278697'),(41,'website','0003_alter_amenity_amenity','2024-02-09 10:30:18.078813'),(42,'website','0004_room_amenities','2024-02-09 11:10:53.303101'),(43,'website','0002_auto_20240209_1116','2024-02-09 11:30:26.563946'),(44,'website','0002_auto_20240209_1141','2024-02-09 11:42:10.209973'),(45,'website','0003_alter_room_pricenight','2024-02-09 15:15:24.681320'),(46,'website','0002_auto_20240209_1521','2024-02-09 15:23:52.629318'),(47,'website','0003_auto_20240209_1527','2024-02-09 15:27:48.295208'),(48,'website','0004_alter_booking_email','2024-02-09 15:27:56.755021'),(49,'website','0005_remove_contact_stars','2024-02-12 10:11:24.059325'),(50,'website','0006_remove_contact_userimg','2024-02-12 10:14:57.037412'),(51,'website','0007_auto_20240212_1055','2024-02-12 10:56:28.218917'),(52,'website','0008_contact_fullname','2024-02-12 10:57:55.509439'),(53,'website','0009_alter_contact_fullname','2024-02-12 11:02:23.931029'),(54,'website','0010_auto_20240212_1102','2024-02-12 11:02:24.007649'),(55,'website','0011_alter_contact_options','2024-02-12 11:03:06.475064'),(56,'website','0012_auto_20240212_1108','2024-02-12 11:10:40.999272'),(57,'website','0002_auto_20240213_0833','2024-02-13 08:41:55.310337'),(58,'website','0003_auto_20240213_1312','2024-02-13 13:12:56.761327');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2024-02-05 10:46:55.270423'),(2,'auth','0001_initial','2024-02-05 10:46:55.717195'),(3,'admin','0001_initial','2024-02-05 10:46:55.831906'),(4,'admin','0002_logentry_remove_auto_add','2024-02-05 10:46:55.845353'),(5,'admin','0003_logentry_add_action_flag_choices','2024-02-05 10:46:55.852965'),(6,'contenttypes','0002_remove_content_type_name','2024-02-05 10:46:55.914369'),(7,'auth','0002_alter_permission_name_max_length','2024-02-05 10:46:55.954038'),(8,'auth','0003_alter_user_email_max_length','2024-02-05 10:46:55.971210'),(9,'auth','0004_alter_user_username_opts','2024-02-05 10:46:55.977999'),(10,'auth','0005_alter_user_last_login_null','2024-02-05 10:46:56.012231'),(11,'auth','0006_require_contenttypes_0002','2024-02-05 10:46:56.016736'),(12,'auth','0007_alter_validators_add_error_messages','2024-02-05 10:46:56.023424'),(13,'auth','0008_alter_user_username_max_length','2024-02-05 10:46:56.064867'),(14,'auth','0009_alter_user_last_name_max_length','2024-02-05 10:46:56.107058'),(15,'auth','0010_alter_group_name_max_length','2024-02-05 10:46:56.124049'),(16,'auth','0011_update_proxy_permissions','2024-02-05 10:46:56.131533'),(17,'auth','0012_alter_user_first_name_max_length','2024-02-05 10:46:56.172951'),(18,'sessions','0001_initial','2024-02-05 10:46:56.210378'),(19,'polls','0001_initial','2024-02-05 11:02:07.564545'),(20,'polls','0002_auto_20240205_1234','2024-02-05 12:35:17.442512'),(21,'polls','0003_auto_20240205_1304','2024-02-05 13:05:07.673557'),(22,'polls','0004_room','2024-02-05 14:23:53.104144'),(23,'polls','0005_booking','2024-02-05 15:39:12.791038'),(24,'polls','0006_auto_20240205_1603','2024-02-05 16:14:59.421306'),(25,'polls','0007_rename_room_booking_room_id','2024-02-05 16:14:59.444631'),(26,'polls','0008_rename_room_id_booking_room','2024-02-05 16:14:59.465271'),(27,'polls','0009_rename_room_booking_room_id','2024-02-05 16:14:59.488194'),(28,'polls','0010_rename_room_id_booking_room','2024-02-05 16:14:59.508735'),(29,'polls','0011_remove_booking_room','2024-02-05 16:14:59.531244'),(30,'polls','0012_booking_room','2024-02-05 16:14:59.577425'),(31,'polls','0013_alter_booking_options','2024-02-05 16:20:06.103143'),(32,'polls','0014_alter_booking_options','2024-02-05 16:24:44.218615'),(33,'polls','0015_alter_booking_specialrequest','2024-02-05 16:26:16.926468'),(34,'polls','0016_alter_booking_specialrequest','2024-02-05 16:29:01.244893'),(35,'polls','0017_alter_room_pricenight','2024-02-05 16:37:24.442595'),(36,'polls','0018_alter_booking_check_out','2024-02-06 09:37:06.034840'),(37,'polls','0019_auto_20240207_1338','2024-02-07 13:38:58.621175'),(38,'polls','0020_alter_amenity_amenity','2024-02-07 17:35:33.942234'),(39,'website','0001_initial','2024-02-09 10:10:59.236086'),(40,'website','0002_alter_booking_status','2024-02-09 10:20:51.278697'),(41,'website','0003_alter_amenity_amenity','2024-02-09 10:30:18.078813'),(42,'website','0004_room_amenities','2024-02-09 11:10:53.303101'),(43,'website','0002_auto_20240209_1116','2024-02-09 11:30:26.563946'),(44,'website','0002_auto_20240209_1141','2024-02-09 11:42:10.209973'),(45,'website','0003_alter_room_pricenight','2024-02-09 15:15:24.681320'),(46,'website','0002_auto_20240209_1521','2024-02-09 15:23:52.629318'),(47,'website','0003_auto_20240209_1527','2024-02-09 15:27:48.295208'),(48,'website','0004_alter_booking_email','2024-02-09 15:27:56.755021'),(49,'website','0005_remove_contact_stars','2024-02-12 10:11:24.059325'),(50,'website','0006_remove_contact_userimg','2024-02-12 10:14:57.037412'),(51,'website','0007_auto_20240212_1055','2024-02-12 10:56:28.218917'),(52,'website','0008_contact_fullname','2024-02-12 10:57:55.509439'),(53,'website','0009_alter_contact_fullname','2024-02-12 11:02:23.931029'),(54,'website','0010_auto_20240212_1102','2024-02-12 11:02:24.007649'),(55,'website','0011_alter_contact_options','2024-02-12 11:03:06.475064'),(56,'website','0012_auto_20240212_1108','2024-02-12 11:10:40.999272'),(57,'website','0002_auto_20240213_0833','2024-02-13 08:41:55.310337'),(58,'website','0003_auto_20240213_1312','2024-02-13 13:12:56.761327'),(63,'website','0001_initial ','2024-02-13 14:03:28.186645'),(64,'website','0002_auto_20240213_1343','2024-02-13 14:03:28.253833'),(65,'website','0003_auto_20240213_1344','2024-02-13 14:03:28.295558'),(66,'website','0004_auto_20240213_1356','2024-02-13 14:03:28.303924'),(67,'website','0005_auto_20240214_1045','2024-02-14 10:45:42.478655'),(68,'website','0006_auto_20240214_1045','2024-02-14 10:47:29.895476'),(69,'website','0005_auto_20240214_1045 copy','2024-02-14 10:47:29.902818'),(70,'website','0007_merge_20240214_1047','2024-02-14 10:47:29.905607');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -345,7 +387,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('pmjswhlu8zn8es95088s2xsk2ekabnwh','.eJxVjDsOwjAQBe_iGlnx30tJzxmsXX9wANlSnFSIu0OkFNC-mXkvFnBba9hGXsKc2JkJdvrdCOMjtx2kO7Zb57G3dZmJ7wo_6ODXnvLzcrh_BxVH_dYyCkPKR00GykRSaiecdEqSz9HkZJz24DEnAE8CrIaiXJxssUI6LMDeH8kwNzQ:1rWwk9:m8Wh0YNHs9N9trrRaOgcH1ekJGggyouVy2KkH30k2jg','2024-02-19 11:02:29.759769');
+INSERT INTO `django_session` VALUES ('b8fngrda2yoc1lfoj9ss63we289ieypi','.eJxVjDkOwjAUBe_iGll4TUJJnzNYfzMOIEeKkwpxd4iUAto3M--lEmxrSVuTJU2sLsqr0--GQA-pO-A71Nusaa7rMqHeFX3QpseZ5Xk93L-DAq1868AGbDaRfEbBPpypBxIbJbgBMXZkyQO6ziMOGNh5zhBzABtJomFQ7w8QBTlF:1rZv6L:rBqPCC7H2ot1RhNE46Z9tfgs5WFzE71sxz-yCKfAO_E','2024-02-27 15:53:41.571012'),('pmjswhlu8zn8es95088s2xsk2ekabnwh','.eJxVjDsOwjAQBe_iGlnx30tJzxmsXX9wANlSnFSIu0OkFNC-mXkvFnBba9hGXsKc2JkJdvrdCOMjtx2kO7Zb57G3dZmJ7wo_6ODXnvLzcrh_BxVH_dYyCkPKR00GykRSaiecdEqSz9HkZJz24DEnAE8CrIaiXJxssUI6LMDeH8kwNzQ:1rWwk9:m8Wh0YNHs9N9trrRaOgcH1ekJGggyouVy2KkH30k2jg','2024-02-19 11:02:29.759769');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -608,6 +650,8 @@ DROP TABLE IF EXISTS `website_booking`;
 CREATE TABLE `website_booking` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(9) NOT NULL,
   `orderDate` date NOT NULL,
   `check_in` date NOT NULL,
   `hour_in` time(6) NOT NULL,
@@ -616,12 +660,10 @@ CREATE TABLE `website_booking` (
   `room_id` int NOT NULL,
   `specialRequest` longtext,
   `status` varchar(50) NOT NULL,
-  `phone` varchar(9) NOT NULL,
-  `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `website_booking_room_id_2ed3043f_fk_website_room_id` (`room_id`),
   CONSTRAINT `website_booking_room_id_2ed3043f_fk_website_room_id` FOREIGN KEY (`room_id`) REFERENCES `website_room` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -630,7 +672,7 @@ CREATE TABLE `website_booking` (
 
 LOCK TABLES `website_booking` WRITE;
 /*!40000 ALTER TABLE `website_booking` DISABLE KEYS */;
-INSERT INTO `website_booking` VALUES (65,'Juan Pérez','2024-02-06','2024-03-06','15:00:00.000000','2024-03-09','11:00:00.000000',58,'Necesita cama adicional','Check In','633841603','diego@diegomompo.com'),(66,'María López','2024-02-07','2024-03-10','14:30:00.000000','2024-03-15','10:30:00.000000',58,'null','Check In','633841603','diego@diegomompo.com'),(67,'Roberto Sánchez','2024-02-08','2024-03-05','16:45:00.000000','2024-03-08','12:00:00.000000',65,NULL,'Check In','633841603','diego@diegomompo.com'),(68,'Ana Martínez','2024-02-09','2024-03-12','13:00:00.000000','2024-03-17','09:00:00.000000',67,'Preferencia por una habitación tranquila','Check In','633841603','diego@diegomompo.com'),(69,'Pedro García','2024-02-10','2024-03-08','17:30:00.000000','2024-03-11','10:30:00.000000',62,NULL,'Check In','633841603','diego@diegomompo.com'),(70,'Laura Rodríguez','2024-02-11','2024-03-15','12:00:00.000000','2024-03-20','11:00:00.000000',54,'Pet friendly','Check In','633841603','diego@diegomompo.com'),(71,'Carlos Gómez','2024-02-12','2024-03-17','14:00:00.000000','2024-03-22','09:30:00.000000',56,NULL,'Check In','633841603','diego@diegomompo.com'),(72,'Sofía Fernández','2024-02-13','2024-03-09','15:45:00.000000','2024-03-14','12:30:00.000000',61,'Necesita habitación con vista a la montaña','Check In','633841603','diego@diegomompo.com'),(73,'Daniel Ruiz','2024-02-14','2024-03-06','18:00:00.000000','2024-03-09','10:00:00.000000',63,NULL,'Check In','633841603','diego@diegomompo.com'),(74,'Elena Serrano','2024-02-15','2024-03-11','11:30:00.000000','2024-03-16','10:30:00.000000',64,'Requiere cuna para bebé','Check In','633841603','diego@diegomompo.com'),(75,'Javier Hernández','2024-02-16','2024-03-18','16:15:00.000000','2024-03-23','11:30:00.000000',66,NULL,'Check In','633841603','diego@diegomompo.com'),(76,'Andrea Díaz','2024-02-17','2024-03-20','13:45:00.000000','2024-03-25','12:00:00.000000',68,'Pet friendly','Check In','633841603','diego@diegomompo.com'),(77,'David Muñoz','2024-02-18','2024-03-05','19:00:00.000000','2024-03-08','09:00:00.000000',55,NULL,'Check In','633841603','diego@diegomompo.com'),(78,'Paula Castro','2024-02-19','2024-03-14','10:00:00.000000','2024-03-19','11:00:00.000000',57,NULL,'Check In','633841603','diego@diegomompo.com'),(79,'Mario Bravo','2024-02-20','2024-03-08','14:30:00.000000','2024-03-11','10:00:00.000000',59,'Necesita habitación con terraza','Check In','633841603','diego@diegomompo.com'),(80,'ddd','2024-02-09','2024-02-24','18:00:00.000000','2024-02-27','12:00:00.000000',54,'ddd','Check In','633841603','d@d.com');
+INSERT INTO `website_booking` VALUES (65,'Juan Pérez','diego@diegomompo.com','633841603','2024-02-06','2024-03-06','15:00:00.000000','2024-03-09','11:00:00.000000',58,'Necesita cama adicional','Check In'),(66,'María López','diego@diegomompo.com','633841603','2024-02-07','2024-03-10','14:30:00.000000','2024-03-15','10:30:00.000000',58,'null','Check In'),(67,'Roberto Sánchez','diego@diegomompo.com','633841603','2024-02-08','2024-03-05','16:45:00.000000','2024-03-08','12:00:00.000000',65,NULL,'Check In'),(68,'Ana Martínez','diego@diegomompo.com','633841603','2024-02-09','2024-03-12','13:00:00.000000','2024-03-17','09:00:00.000000',67,'Preferencia por una habitación tranquila','Check In'),(69,'Pedro García','diego@diegomompo.com','633841603','2024-02-10','2024-03-08','17:30:00.000000','2024-03-11','10:30:00.000000',62,NULL,'Check In'),(70,'Laura Rodríguez','diego@diegomompo.com','633841603','2024-02-11','2024-03-15','12:00:00.000000','2024-03-20','11:00:00.000000',54,'Pet friendly','Check In'),(71,'Carlos Gómez','diego@diegomompo.com','633841603','2024-02-12','2024-03-17','14:00:00.000000','2024-03-22','09:30:00.000000',56,NULL,'Check In'),(72,'Sofía Fernández','diego@diegomompo.com','633841603','2024-02-13','2024-03-09','15:45:00.000000','2024-03-14','12:30:00.000000',61,'Necesita habitación con vista a la montaña','Check In'),(73,'Daniel Ruiz','diego@diegomompo.com','633841603','2024-02-14','2024-03-06','18:00:00.000000','2024-03-09','10:00:00.000000',63,NULL,'Check In'),(74,'Elena Serrano','diego@diegomompo.com','633841603','2024-02-15','2024-03-11','11:30:00.000000','2024-03-16','10:30:00.000000',64,'Requiere cuna para bebé','Check In'),(75,'Javier Hernández','diego@diegomompo.com','633841603','2024-02-16','2024-03-18','16:15:00.000000','2024-03-23','11:30:00.000000',66,NULL,'Check In'),(76,'Andrea Díaz','diego@diegomompo.com','633841603','2024-02-17','2024-03-20','13:45:00.000000','2024-03-25','12:00:00.000000',68,'Pet friendly','Check In'),(77,'David Muñoz','diego@diegomompo.com','633841603','2024-02-18','2024-03-05','19:00:00.000000','2024-03-08','09:00:00.000000',55,NULL,'Check In'),(78,'Paula Castro','diego@diegomompo.com','633841603','2024-02-19','2024-03-14','10:00:00.000000','2024-03-19','11:00:00.000000',57,NULL,'Check In'),(79,'Mario Bravo','diego@diegomompo.com','633841603','2024-02-20','2024-03-08','14:30:00.000000','2024-03-11','10:00:00.000000',59,'Necesita habitación con terraza','Check In');
 /*!40000 ALTER TABLE `website_booking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -643,7 +685,7 @@ DROP TABLE IF EXISTS `website_contact`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `website_contact` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `fullName` varchar(100) DEFAULT NULL,
+  `fullName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(9) NOT NULL,
   `date` date NOT NULL,
@@ -683,7 +725,7 @@ CREATE TABLE `website_order` (
   KEY `website_order_user_id_13a763ad_fk_auth_user_id` (`user_id`),
   CONSTRAINT `website_order_room_id_b504a347_fk_website_room_id` FOREIGN KEY (`room_id`) REFERENCES `website_room` (`id`),
   CONSTRAINT `website_order_user_id_13a763ad_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -692,6 +734,7 @@ CREATE TABLE `website_order` (
 
 LOCK TABLES `website_order` WRITE;
 /*!40000 ALTER TABLE `website_order` DISABLE KEYS */;
+INSERT INTO `website_order` VALUES (3,'Food','ffffff4','2024-02-14 11:05:02.500297',54,4),(4,'Food','2222','2024-02-14 11:18:51.856511',58,4),(5,'Food','2223','2024-02-14 11:19:02.138551',62,4),(6,'Food','2224','2024-02-14 11:19:08.526353',66,4),(7,'Food','sss','2024-02-14 12:55:36.964161',60,4),(8,'Food','dddd','2024-02-14 12:55:44.187847',61,4);
 /*!40000 ALTER TABLE `website_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -800,4 +843,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-13 14:16:45
+-- Dump completed on 2024-02-14 14:15:01
