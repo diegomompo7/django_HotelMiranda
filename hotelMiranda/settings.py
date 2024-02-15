@@ -12,12 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-from decouple import config
+from decouple import Config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = Config("SECRET_KEY")
 
 
 # Quick-start development settings - unsuitable for production
@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'hotelMiranda.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': config("DATABASE_NAME"),
-        'USER': config("DATABASE_USER"),
-        'PASSWORD': config("DATABASE_PASSWORD"),
-        'HOST': config("DATABASE_HOST"),
-        'PORT': config("DATABASE_PORT"),
+        'NAME': Config("DATABASE_NAME"),
+        'USER': Config("DATABASE_USER"),
+        'PASSWORD': Config("DATABASE_PASSWORD"),
+        'HOST': Config("DATABASE_HOST"),
+        'PORT': Config("DATABASE_PORT"),
     }
 }
 
