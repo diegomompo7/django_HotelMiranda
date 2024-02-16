@@ -90,7 +90,7 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(max_length=255, verbose_name='Email')),
                 ('phone', models.CharField(max_length=9, validators=[django.core.validators.RegexValidator(code='invalid_registration', message='Enter a valid format phone number', regex='^(0|91)?[6-9][0-9]{8}')])),
                 ('orderDate', models.DateField(auto_now_add=True)),
-                ('check_in', models.DateField(validators=[website.models.Booking.checkInHigherOrderDate])),
+                ('check_in', models.DateField()),
                 ('hour_in', models.TimeField()),
                 ('check_out', models.DateField()),
                 ('hour_out', models.TimeField()),

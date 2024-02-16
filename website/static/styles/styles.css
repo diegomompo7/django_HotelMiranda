@@ -1711,22 +1711,35 @@
   display: flex;
   justify-content: center;
 }
-.rooms__page button {
+.rooms__page--selected {
+  background-color: #BEAD8E;
+  color: #FFFFFF;
+  border: none;
+  font-size: 0.875rem;
+  font-family: "Oswald";
+  padding: 0.457em 0.7em;
+}
+.rooms__page a {
+  margin-right: 30px;
+}
+.rooms__page--button {
   background-color: #FFFFFF;
   border: none;
-  margin-right: 0.714em;
   font-size: 0.875rem;
   font-family: "Oswald";
   padding: 0.857em 1.143em;
+}
+.rooms__page--isDisabled {
+  color: currentColor;
+  pointer-events: none;
+  opacity: 0.5;
+  text-decoration: none;
 }
 .rooms__page p {
   margin-right: 0.714em;
   font-size: 0.875rem;
   font-family: "Oswald";
   padding: 0.857em 1.143em;
-}
-.rooms__page a:active {
-  background-color: red;
 }
 
 .secondDescription__text {
@@ -2751,6 +2764,14 @@
 .order button-block {
   display: block;
   width: 100%;
+}
+.order p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: "Old Standard TT";
+  padding-bottom: 0.667em;
+  margin: 0 auto;
+  margin-top: 1em;
 }
 
 *, *:before, *:after {

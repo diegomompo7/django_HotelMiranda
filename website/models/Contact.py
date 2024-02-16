@@ -1,5 +1,6 @@
+from django.core.validators import RegexValidator
 from django.db import models
-from django.core.validators import RegexValidator, MinValueValidator, MaxValueValidator
+
 from datetime import date
 
     

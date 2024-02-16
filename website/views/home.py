@@ -1,11 +1,9 @@
-from django.forms.forms import BaseForm
-from django.http import HttpResponse, Http404, JsonResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from ..Form import *
-from ..models.Room import *
-from django.urls import reverse_lazy
-
 from django.views.generic import *
+
+from website.models import *
+from website.forms import *
 
 class HomeView(ListView, FormView):
     

@@ -1,15 +1,12 @@
 from django import forms
-from django.http import HttpResponse
-from django import forms
+from django.contrib.auth.forms import UserCreationForm  
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
-from website.models.Booking import Booking
-from django.contrib.auth.models import User
-from .models.Contact import Contact
-from .models.Order import Order
-from .models.Room import Room
+
+
+from website.models import *
+from website.forms import *
 from datetime import date
-from django.contrib.auth.forms import UserCreationForm  
 
 def checkInHigherOrderDate(value):
     if value <= date.today():
@@ -105,4 +102,14 @@ class FormUpdateOrder(forms.ModelForm):
         label = {
             "description" : "Description"
         }
+
+class OrderRoomsForm(forms.Form):
+    ORDER_CHOICES = [
+        ('', 'Select an option'),
+        ('id', 'ID'),
+        ('less_price', 'Less price'),
+        ('higher_price', 'Higher price'),
+        ('less_price', 'Less price'),
+    ]
     
+    order_rooms = forms.ChoiceField(choices=ORDER_CHOICES, required=False)

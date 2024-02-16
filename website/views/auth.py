@@ -1,14 +1,11 @@
-from django.http import HttpResponse, Http404, JsonResponse, HttpResponseRedirect
-from django.shortcuts import render
-from ..Form import *
-from ..models.Room import *
-from django.contrib.auth.forms import UserCreationForm 
-from django.contrib.auth import logout
-from django.views.generic import *
-from django.views.generic import *
-from django.urls import reverse_lazy
-from ..Form import FormLogin
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import *
+
+from website.models import *
+from website.forms import *
 
 class LoginFormView(FormView, RedirectView):
     form_class = FormLogin

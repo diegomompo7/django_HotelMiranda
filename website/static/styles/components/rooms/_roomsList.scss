@@ -91,22 +91,41 @@
 
     display: flex;
     justify-content: center;
-    & button {
-      background-color: $first-color;
+
+      &--selected{
+      background-color: $third-color;
+      color: $first-color;
       border: none;
-      margin-right: 0.714em;
       font-size: 0.875rem;
       font-family: 'Oswald';
-      padding: 0.857em 1.143em;
-    }
+      padding: 0.457em 0.7em;
+      }
+    
+      & a{
+        margin-right: 30px;
+
+       
+      }
+      &--button {
+        background-color: $first-color;
+        border: none;
+        font-size: 0.875rem;
+        font-family: 'Oswald';
+        padding: 0.857em 1.143em;
+      }
+
+      &--isDisabled {
+        color: currentColor;
+        pointer-events: none;
+        opacity: 0.5;
+        text-decoration: none;
+      }
+    
     & p {
       margin-right: 0.714em;
       font-size: 0.875rem;
       font-family: 'Oswald';
       padding: 0.857em 1.143em;
-    }
-    & a:active{
-      background-color: red;
     }
   }
 }

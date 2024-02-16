@@ -1,8 +1,8 @@
-from datetime import date
-from django.db import models
-from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.db import models
+
 from .Room import *
+from datetime import date
 
 class TypeOrder(models.TextChoices):
     FOOD = "Food", "Food"
