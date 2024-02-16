@@ -17,7 +17,7 @@ def checkInHigherOrderDate(value):
     
 
 class CheckAvailabilityForm(forms.Form):
-    check_in = forms.DateField(label="Arrival Date", widget=forms.DateInput(attrs={'type': 'date'}))
+    check_in = forms.DateField(label="Arrival Date", widget=forms.DateInput(attrs={'type': 'date'}), validators=[checkInHigherOrderDate])
     check_out = forms.DateField(label="Departure Date", widget=forms.DateInput(attrs={'type': 'date'}))
     
     def clean(self):

@@ -20,17 +20,16 @@
       </div>
     </header>
     {% if room %}
-    {% for data in room %}
     <section class="statsReserve">
       <div class="statsReserve__stats">
         <div class="statsReserve__stats--firstDescription">
           <div class="statsReserve__stats--firstDescription--text">
-            <h3>{{data.roomType}}</h3>
-            <h1>Room {{data.roomNumber}}</h1>
+            <h3>{{room.roomType}}</h3>
+            <h1>Room {{room.roomNumber}}</h1>
           </div>
           <div class="statsReserve__stats--firstDescription--price">
             <h1>
-              {{data.priceNight}}
+              {{room.priceNight}}
               <p>/Night</p>
             </h1>
           </div>
@@ -38,14 +37,14 @@
 
         <img
           class="statsReserve__stats--img"
-          src="{{data.photos.0}}"
+          src="{{room.photos.0}}"
           alt=""
         />
       </div>
 
       <div class="statsReserve__reserve">
         <h1 class="statsReserve__reserve--title">Check Availabity</h1>
-        <form action="{% url 'createBook' data.id %}" class="statsReserve__reserve--form" method="POST">
+        <form action="{% url 'createBook' room.id %}" class="statsReserve__reserve--form" method="POST">
           {% csrf_token %} 
           <label class="statsReserve__reserve--form--label"
             >{{form.check_in.label}}
@@ -95,14 +94,14 @@
 
     <section class="secondDescription">
       <p class="secondDescription__text">
-        {{data.description}}
+        {{room.description}}
       </p>
     </section>
     <section class="amenities">
       <h1 class="amenities__title">Amenities</h1>
       <hr class="amenities__line" />
       <div class="amenities__items">
-        {% for eachAmenity in data.amenities.all%}
+        {% for eachAmenity in room.amenities.all%}
         <div class="amenities__items--have">
             <p>{{eachAmenity.amenity}}</p>
         </div>
@@ -143,10 +142,9 @@
       <h1 class="cancel__title">Cancellation</h1>
       <hr class="cancel__line" />
       <p class="cancel__text">
-        {{data.cancellation}}
+        {{room.cancellation}}
       </p>
     </section>
-    {% endfor %}
     {% else %}
     <h1 class="secondDescription__text">Room not found</h1>
     {% endif %}

@@ -31,7 +31,9 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["13.38.229.24"]
+#ALLOWED_HOSTS = ['13.38.229.24']
+ALLOWED_HOSTS = ['localhost']
+
 
 
 # Application definition
@@ -134,8 +136,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
     "/var/www/static/",
 ]
-
-STATIC_ROOT = os.environ.get('STATIC_ROOT', '/var/www/miranda-static/static')
+STATIC_ROOT = '/var/www/miranda-static/static/'
 
 
 # Default primary key field type

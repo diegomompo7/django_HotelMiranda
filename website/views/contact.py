@@ -17,4 +17,3 @@ def contact(request):
         "../templates/website/contact.html",
         {"form" : form, "message" : message}
 )
-    

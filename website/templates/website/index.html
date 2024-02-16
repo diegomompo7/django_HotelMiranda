@@ -17,7 +17,7 @@ defer
     </div>
   </header>
   <section class="check">
-    <form id="checkForm" action="{% url 'checkAva'%}" class="check__form" method="POST">
+    <form id="checkForm" class="check__form" method="POST">
       {% csrf_token %} 
       <label class="check__form--arrival" for="{{ form.check_in.auto_id }}">{{ form.check_in.label }}
         <div>
