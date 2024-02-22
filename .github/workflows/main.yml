@@ -20,14 +20,14 @@ jobs:
       #  run: pip install -r requirements.txt
 
       - name: Ejecutar comando SSH en el servidor remoto
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 80
 
-      - name: Migrate manage.py
+      """- name: Migrate manage.py
         run: python manage.py migrate
 
       - name: Migrate static
@@ -37,7 +37,7 @@ jobs:
         run: sudo systemctl restart nginx
       
       - name: Restart  gunicorn
-        run: sudo systemctl restart gunicorn
+        run: sudo systemctl restart gunicorn"""
 
 
 
