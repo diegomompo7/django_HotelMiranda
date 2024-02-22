@@ -16,8 +16,8 @@ jobs:
       - name: Pull repository
         run: git pull
       
-      - name: Install requeriments
-        run: pip install -r requirements.txt
+      #- name: Install requeriments
+      #  run: pip install -r requirements.txt
 
       - name: Ejecutar comando SSH en el servidor remoto
         uses: appleboy/ssh-action@v1.0.3
