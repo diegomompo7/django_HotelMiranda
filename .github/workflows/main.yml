@@ -16,9 +16,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            echo "¡Hola mundo!"
-            # Agrega aquí los comandos que deseas ejecutar en el servidor remoto
 
       - name: Checkout repository
         uses: actions/checkout@v4
