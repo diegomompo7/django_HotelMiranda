@@ -1,1 +1,43 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          script: whoami
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Pull repository
+        run: git pull
+      
+      - name: Install requeriments
+        run: pip install -r requirements.txt
+
+      - name: Migrate manage.py
+        run: python manage.py migrate
+
+      - name: Migrate static
+        run: sudo /home/ubuntu/env/bin/python3 manage.py collectstatic
+      
+      - name: Restart nignx
+        run: sudo systemctl restart nginx
+      
+      - name: Restart  gunicorn
+        run: sudo systemctl restart gunicorn
+
+
 
