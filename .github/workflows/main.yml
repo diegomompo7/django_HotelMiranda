@@ -10,14 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ejecutar comando SSH en el servidor remoto
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -26,6 +18,14 @@ jobs:
       
       - name: Install requeriments
         run: pip install -r requirements.txt
+
+      - name: Ejecutar comando SSH en el servidor remoto
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
 
       - name: Migrate manage.py
         run: python manage.py migrate
