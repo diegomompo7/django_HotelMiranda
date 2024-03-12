@@ -3,6 +3,7 @@ from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import *
+from django.http import QueryDict
 
 from website.models import *
 from website.forms import *
@@ -25,6 +26,7 @@ class RoomListView(ListView):
                 queryset = queryset.order_by('priceNight')
         
         return queryset
+
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -35,7 +37,7 @@ class RoomListView(ListView):
         context['pageNumber'] = int(page_number)
         context['order_room'] = OrderRoomsForm(self.request.GET)
 
-        
+        print(context)
 
         del context['object_list']
         return context
