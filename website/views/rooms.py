@@ -32,6 +32,9 @@ class RoomListView(ListView):
         context = super().get_context_data(**kwargs)
         paginator = Paginator(self.get_queryset(), self.paginate_by)
         page_number = self.request.GET.get('page', 1)
+        query_dict = QueryDict(self.request.GET.urlencode(), mutable=True)
+        query_dict['page'] = str(page_number)
+        self.request.GET = query_dict
         context["pages"] = paginator.page_range
         context["totalPages"] = paginator.num_pages
         context['pageNumber'] = int(page_number)
@@ -133,8 +136,12 @@ class RoomsAvailableInRangeListView(ListView):
         context = super().get_context_data(**kwargs)
         paginator = Paginator(self.get_queryset(), self.paginate_by)
         page_number = self.request.GET.get('page', 1)
+        query_dict = QueryDict(self.request.GET.urlencode(), mutable=True)
+        query_dict['page'] = str(page_number)
+        self.request.GET = query_dict
         context["pages"] = paginator.page_range
-        context['pageNumber'] = page_number
+        context["totalPages"] = paginator.num_pages
+        context['pageNumber'] = int(page_number)
         del context['object_list'] 
         return context
     

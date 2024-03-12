@@ -54,11 +54,11 @@ defer
       {% endfor %}
       <a {% if pageNumber == totalPages %}class="rooms__page--isDisabled"{% endif %} href="{{ request.path }}?page={{ pageNumber|add:'+1' }}"><button class="rooms__page--button">>></button></a>
     {% else %}
-      <a {% if pageNumber == 1 %}class="rooms__page--isDisabled"{% endif %} href="{{ request.get_full_path|cut:'&page='|cut:request.GET.page }}&page={{ pageNumber|add:'-1' }}"><button class="rooms__page--button"><<</button></a>
+      <a {% if pageNumber == 1 %}class="rooms__page--isDisabled"{% endif %} href="{{ request.get_full_path|slice:'&page=\d+' }}&page={{ pageNumber|add:'-1' }}"><button class="rooms__page--button"><<</button></a>
       {% for page in pages %}
-        <a {% if pageNumber == page %}class="rooms__page--selected"{% endif %} href="{{ request.get_full_path|cut:'&page='|cut:request.GET.page }}&page={{ page }}"><button {% if pageNumber == page %}class="rooms__page--selected"{% else %}class="rooms__page--button"{% endif %}>{{page}}</button></a>
+        <a {% if pageNumber == page %}class="rooms__page--selected"{% endif %} href="{{ request.get_full_path|slice:'&page=\d+' }}&page={{ page }}"><button {% if pageNumber == page %}class="rooms__page--selected"{% else %}class="rooms__page--button"{% endif %}>{{page}}</button></a>
       {% endfor %}
-      <a {% if pageNumber == totalPages %}class="rooms__page--isDisabled"{% endif %} href="{{ request.get_full_path|cut:'&page='|cut:request.GET.page }}&page={{ pageNumber|add:'+1' }}"><button class="rooms__page--button">>></button></a>
+      <a {% if pageNumber == totalPages %}class="rooms__page--isDisabled"{% endif %} href="{{ request.get_full_path|cut:'&page='|first}}&page={{ pageNumber|add:'+1' }}"><button class="rooms__page--button">>></button></a>
     {% endif %}
   {% else %}
     <a {% if pageNumber == 1 %}class="rooms__page--isDisabled"{% endif %} href="{{ request.path }}?page={{ pageNumber|add:'-1' }}"><button class="rooms__page--button"><<</button></a>
