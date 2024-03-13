@@ -19,8 +19,9 @@ defer
       </header>
       <section class="rooms">
         {% if roomsList %}
-        <form id="orderForm" method="get">
+        <form class="rooms__select" id="orderForm" method="get">
           {{ order_room.as_p }}
+          
          </form>
         <div class="rooms__items">
           {% for room in roomsList %}

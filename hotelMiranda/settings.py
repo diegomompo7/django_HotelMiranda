@@ -31,7 +31,8 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['35.180.69.117']
+#ALLOWED_HOSTS = ['127.0.0.1']
 #ALLOWED_HOSTS = ['localhost']
 
 
@@ -130,13 +131,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
     "/var/www/static/",
 ]
 STATIC_ROOT = '/var/www/miranda-static/static/'
+
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'website', 'static'),
+#]
+
 
 
 # Default primary key field type

@@ -1741,6 +1741,9 @@
   font-family: "Oswald";
   padding: 0.857em 1.143em;
 }
+.rooms__select {
+  background-color: red;
+}
 
 .secondDescription__text {
   white-space: break-word;
