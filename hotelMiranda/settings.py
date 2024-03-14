@@ -134,7 +134,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "website/static",
-    "/var/www/static/",
+    "/var/www/miranda-static/static/",
 ]
 STATIC_ROOT = '/var/www/miranda-static/static/'
 
