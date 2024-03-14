@@ -136,7 +136,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "website/static",
     "/var/www/static/",
 ]
-STATIC_ROOT = '/var/www/miranda-static/static/'
+STATIC_ROOT = '/var/www/miranda-static/static/' 
 
 
 # Default primary key field type
