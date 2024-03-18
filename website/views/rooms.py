@@ -3,6 +3,7 @@ from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import *
+from django.urls import reverse
 from django.http import QueryDict
 
 from website.models import *
@@ -117,7 +118,17 @@ class RoomsAvailableInRangeListView(ListView):
     paginate_by = 10
     
     def get_queryset(self):
-        return Room.objects.prefetch_related("amenities").filter(id__in=self.get_booking_available())
+        queryset= Room.objects.prefetch_related("amenities").filter(id__in=self.get_booking_available())
+    
+        form = OrderRoomsForm(self.request.GET)
+        if form.is_valid():
+            order_rooms = form.cleaned_data.get('order_rooms')
+            if order_rooms == 'higher_price':
+                queryset = queryset.order_by('-priceNight')
+            elif order_rooms == 'less_price':
+                queryset = queryset.order_by('priceNight')
+        
+        return queryset
         
     def get_booking_available(self):
         
@@ -136,12 +147,21 @@ class RoomsAvailableInRangeListView(ListView):
         context = super().get_context_data(**kwargs)
         paginator = Paginator(self.get_queryset(), self.paginate_by)
         page_number = self.request.GET.get('page', 1)
-        query_dict = QueryDict(self.request.GET.urlencode(), mutable=True)
+        
+        query_dict = QueryDict(mutable=True)
+        
+        query_dict.update(self.request.GET)
+        if self.request.GET.get('order_rooms'):
+            query_dict['order_room'] = self.request.GET.get('order_rooms')
+        else:
+            query_dict['order_room'] = 'id'
         query_dict['page'] = str(page_number)
+        
         self.request.GET = query_dict
         context["pages"] = paginator.page_range
         context["totalPages"] = paginator.num_pages
         context['pageNumber'] = int(page_number)
+        context['order_room'] = OrderRoomsForm(self.request.GET)
         del context['object_list'] 
         return context
     

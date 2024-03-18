@@ -20,6 +20,10 @@ defer
       <section class="rooms">
         {% if roomsList %}
         <form class="rooms__select" id="orderForm" method="get">
+          {% if request.GET.checkin %}
+          <input type="hidden" name="checkin" value="{{ request.GET.checkin }}">
+          <input type="hidden" name="checkout" value="{{ request.GET.checkout }}">
+           {% endif %}
           {{ order_room.as_p}} 
           
          </form>
@@ -48,19 +52,19 @@ defer
         {% endif %}
 <div class="rooms__page">
   {% if request.GET %}
-    {% if request.GET|length == 1 and 'page' in request.GET %}
-      <a {% if pageNumber == 1 %}class="rooms__page--isDisabled"{% endif %} href="{{ request.path }}?page={{ pageNumber|add:'-1' }}"><button class="rooms__page--button"><<</button></a>
-      {% for page in pages %}
-        <a {% if pageNumber == page %}class="rooms__page--selected"{% endif %} href="{{ request.path }}?page={{ page }}"><button {% if pageNumber == page %}class="rooms__page--selected"{% else %}class="rooms__page--button"{% endif %}>{{page}}</button></a>
-      {% endfor %}
-      <a {% if pageNumber == totalPages %}class="rooms__page--isDisabled"{% endif %} href="{{ request.path }}?page={{ pageNumber|add:'+1' }}"><button class="rooms__page--button">>></button></a>
-    {% else %}
-      <a {% if pageNumber == 1 %}class="rooms__page--isDisabled"{% endif %} href="{{ request.get_full_path|slice:'&page=\d+' }}&page={{ pageNumber|add:'-1' }}"><button class="rooms__page--button"><<</button></a>
-      {% for page in pages %}
-        <a {% if pageNumber == page %}class="rooms__page--selected"{% endif %} href="{{ request.get_full_path|slice:'&page=\d+' }}&page={{ page }}"><button {% if pageNumber == page %}class="rooms__page--selected"{% else %}class="rooms__page--button"{% endif %}>{{page}}</button></a>
-      {% endfor %}
-      <a {% if pageNumber == totalPages %}class="rooms__page--isDisabled"{% endif %} href="{{ request.get_full_path|cut:'&page='|first}}&page={{ pageNumber|add:'+1' }}"><button class="rooms__page--button">>></button></a>
-    {% endif %}
+  {% if request.GET|length == 1 and 'page' in request.GET %}
+    <a {% if pageNumber == 1 %}class="rooms__page--isDisabled"{% endif %} href="{{ request.path }}?page={{ pageNumber|add:'-1' }}"><button class="rooms__page--button"><<</button></a>
+    {% for page in pages %}
+      <a {% if pageNumber == page %}class="rooms__page--selected"{% endif %} href="{{ request.path }}?page={{ page }}"><button {% if pageNumber == page %}class="rooms__page--selected"{% else %}class="rooms__page--button"{% endif %}>{{page}}</button></a>
+   {% endfor %}
+    <a {% if pageNumber == totalPages %}class="rooms__page--isDisabled"{% endif %} href="{{ request.path }}?page={{ pageNumber|add:'+1' }}"><button class="rooms__page--button">>></button></a>
+  {% else %}
+  <a {% if pageNumber == 1 %}class="rooms__page--isDisabled"{% endif %} href="{{ request.get_full_path|cut:'&page='|slice:'-1'}}&page={{ pageNumber|add:'-1' }}"><button class="rooms__page--button"><<</button></a>
+  {% for page in pages %}
+    <a {% if pageNumber == page %}class="rooms__page--selected"{% endif %} href="{{ request.get_full_path|cut:'&page='|slice:'-1'}}&page={{ page }}"><button {% if pageNumber == page %}class="rooms__page--selected"{% else %}class="rooms__page--button"{% endif %}>{{page}}</button></a>
+  {% endfor %}
+  <a {% if pageNumber == totalPages %}class="rooms__page--isDisabled"{% endif %} href="{% if '&page' in request.get_full_path%}{{ request.get_full_path|cut:'&page='|slice:'-1'}}{%else%}{{request.get_full_path}}{% endif %}&page={{ pageNumber|add:'+1' }}"><button class="rooms__page--button">>></button></a>
+  {% endif %}
   {% else %}
     <a {% if pageNumber == 1 %}class="rooms__page--isDisabled"{% endif %} href="{{ request.path }}?page={{ pageNumber|add:'-1' }}"><button class="rooms__page--button"><<</button></a>
     {% for page in pages %}

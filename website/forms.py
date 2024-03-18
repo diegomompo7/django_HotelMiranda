@@ -105,9 +105,7 @@ class FormUpdateOrder(forms.ModelForm):
 
 class OrderRoomsForm(forms.Form):
     ORDER_CHOICES = [
-        ('', 'Select an option'),
         ('id', 'ID'),
-        ('less_price', 'Less price'),
         ('higher_price', 'Higher price'),
         ('less_price', 'Less price'),
     ]
