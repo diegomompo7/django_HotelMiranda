@@ -13,7 +13,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("login/", LoginFormView.as_view(), name="login"),
     path("profile/", ProfileView.as_view(), name="profile"),
-    path("logout/", LogOutView.as_view(), name="logout"),
+    path("logout/", logout_view, name="logout"),
     path("signup/", SignupFormView.as_view(), name="signup"),
     path("about/", AboutView.as_view(), name="about"),
     path("rooms/", RoomListView.as_view(), name="rooms"),

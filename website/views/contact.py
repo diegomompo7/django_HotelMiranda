@@ -21,9 +21,12 @@ class ContactFormView(FormView):
             message = form.cleaned_data.get("message"),
         )
             
-        message = (f"¡Thank you for your message \n We have received it correctly.\n The Miranda Hotel")
-            
-        return HttpResponseRedirect(f'/contacts?message={message}')
+        context = {
+            "form" : form,
+            "message" : "¡Thank you for your message \n We have received it correctly.\n The Miranda Hotel",
+        }
+        
+        return render(self.request, self.template_name, context)
   
     def form_invalid(self, form):
         errors = form.errors.get_json_data()

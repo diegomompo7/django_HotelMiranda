@@ -6,8 +6,8 @@ from .Room import Room
 from datetime import date
 
 
-def checkInHigherOrderDate(value):
-    if value <= date.today():
+def checkInHigherOrderDate(value, booking_instance):
+    if value <= booking_instance.orderDate:
         raise ValidationError("Insert a date in greather than order date")
     
 def checkOutHigherCheckIn(value, booking_instance):
@@ -34,16 +34,17 @@ class Booking(models.Model):
         ),
     ])
     orderDate = models.DateField(auto_now_add = True)
-    check_in = models.DateField(validators=[checkInHigherOrderDate])
+    check_in = models.DateField()
     hour_in = models.TimeField()
     check_out = models.DateField()
     hour_out = models.TimeField()
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    specialRequest = models.TextField(max_length = 255, null=True)
+    specialRequest = models.TextField(max_length = 255, null=True,  blank=True)
     status = models.CharField(max_length = 50, choices = StatusBooking.choices,  default="Check In")
     
     class Meta:
        db_table = 'website_booking'
     
     def clean(self):
+        checkInHigherOrderDate(self.check_in, self)
         checkOutHigherCheckIn(self.check_out, self)

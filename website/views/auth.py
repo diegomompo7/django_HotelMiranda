@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import *
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 from website.models import *
 from website.forms import *
@@ -114,6 +116,7 @@ class SignupFormView(CreateView):
         return render(request, self.template_name, context)
                
     
-class LogOutView(RedirectView):
-     def get_redirect_url(self, *args, **kwargs):
-        return reverse_lazy('login')
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+   

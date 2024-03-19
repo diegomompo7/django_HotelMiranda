@@ -62,10 +62,8 @@ class RoomDetailView(DetailView, FormView):
         checkInDate = form.cleaned_data.get("check_in")
         checkOutDate = form.cleaned_data.get("check_out")
             
-        print(checkInDate, checkOutDate)
             
-        checkRoom = Booking.objects.filter(room_id = self.kwargs['pk'], check_in__lt=checkOutDate, check_out__gt=checkInDate).values_list('room_id', flat=True)
-            
+        checkRoom = Booking.objects.filter(room_id = self.kwargs['pk'], check_in__lt=checkOutDate, check_out__gt=checkInDate).values_list('room_id', flat=True) 
             
         if len(checkRoom) == 0:
             Booking.objects.create(
@@ -81,10 +79,23 @@ class RoomDetailView(DetailView, FormView):
                 specialRequest = form.cleaned_data.get("specialRequest"),
                 status = 'Check In')
             
-            message = (f"¡Thank you for your request! \n We have received it correctly. Someone from our Team will get back to you very soon. \n The Miranda Hotel")
-            
-            return HttpResponseRedirect(f'/room/{self.kwargs["pk"]}?message={message}')
-
+            context = {
+            "form" : FormBooking(None),
+            "message" : "¡Thank you for your request! \n We have received it correctly. Someone from our Team will get back to you very soon. \n The Miranda Hotel",
+            "room": self.get_queryset()[0],
+            "relatedRoom": Room.objects.prefetch_related("amenities").filter(roomType=self.get_queryset()[0].roomType, status="Available")
+            }
+            return render(self.request, self.template_name, context)
+        
+        else:
+            context = {
+            "form" : form,
+            "message" : "¡We are sorry!\nThis room is not available for the dates you need. Please try different dates or try a different room.\nThe Miranda Hotel",
+            "room": self.get_queryset()[0],
+            "relatedRoom": Room.objects.prefetch_related("amenities").filter(roomType=self.get_queryset()[0].roomType, status="Available")
+            }
+            return render(self.request, self.template_name, context)
+        
     def form_invalid(self, form):
         errors = form.errors.get_json_data()
             
