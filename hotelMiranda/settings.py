@@ -31,7 +31,8 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['35.180.69.117']
+ALLOWED_HOSTS = ['15.188.49.158']
+#ALLOWED_HOSTS = ['127.0.0.1']
 #ALLOWED_HOSTS = ['localhost']
 
 
@@ -95,7 +96,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -134,13 +134,13 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static/' 
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "website/static",
     "/var/www/static/",
 ]
-STATIC_ROOT = '/var/www/miranda-static/static/'
+STATIC_ROOT = '/var/www/miranda-static/static/' 
 
 
 # Default primary key field type
