@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'website.urls'
@@ -142,7 +143,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = '/var/www/miranda-static/static/'
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:5173/',
+    'http://localhost:5173',
 ]
 
 
