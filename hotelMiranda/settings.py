@@ -31,8 +31,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['15.188.49.158']
-#ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['35.180.69.117']
 #ALLOWED_HOSTS = ['localhost']
 
 
@@ -47,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'website.urls'
@@ -96,6 +93,7 @@ DATABASES = {
     }
 }
 
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -128,19 +126,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-CORS_ALLOW_ALL_ORIGINS = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = 'static/' 
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "website/static",
+    BASE_DIR / "static",
     "/var/www/static/",
 ]
-STATIC_ROOT = '/var/www/miranda-static/static/' 
+STATIC_ROOT = '/var/www/miranda-static/static/'
 
 
 # Default primary key field type
