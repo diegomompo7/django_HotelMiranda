@@ -127,6 +127,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+CORS_ALLOW_CREDENTIALS = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -138,6 +140,10 @@ STATICFILES_DIRS = [
     "/var/www/static/",
 ]
 STATIC_ROOT = '/var/www/miranda-static/static/'
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173/',
+]
 
 
 # Default primary key field type
