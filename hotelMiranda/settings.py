@@ -31,7 +31,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['15.188.49.158']
+ALLOWED_HOSTS = ['15.188.49.158', "*"]
 #ALLOWED_HOSTS = ['localhost']
 
 
