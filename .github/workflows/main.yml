@@ -33,7 +33,6 @@ jobs:
             cd django_HotelMiranda
             git pull origin main
             pip install -r requeriments.txt
-            python -m pip install django-cors-headers
             sudo systemctl restart gunicorn
             sudo systemctl restart nginx
             sudo /home/ubuntu/env/bin/python3 manage.py collectstatic --no-input
